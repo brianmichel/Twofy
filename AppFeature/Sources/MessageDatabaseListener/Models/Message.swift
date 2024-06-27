@@ -3,13 +3,20 @@ import Foundation
 
 public struct Message {
     public let id: Int64
-    let sender: String?
-    let service: String
-    let date: Date
-    let text: String
+    public let sender: String?
+    public let service: String
+    public let date: Date
+    public let text: String
 
     public func extractedCode() -> String? {
         text.extractTwoFactorCodes().first
+    }
+
+    public func maskedCode() -> String {
+        guard let code = extractedCode() else {
+            return "···"
+        }
+        return Array(repeating: "·", count: code.count).joined()
     }
 }
 

@@ -33,7 +33,7 @@ final class ViewModel: ObservableObject {
             }
         }
 
-        listener.start(lookback: .minutes(10))
+        listener.start(lookback: .days(10))
         findingCodes = true
     }
 
