@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Twofy Messaging Bridge",
+  "version": "1.0",
+  "description": "Communicates with the Twofy native desktop application.",
+  "permissions": [
+    "nativeMessaging"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

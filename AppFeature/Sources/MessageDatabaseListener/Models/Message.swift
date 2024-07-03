@@ -36,7 +36,7 @@ extension Message {
     }
 }
 
-extension Message: Identifiable {}
+extension Message: Identifiable, Equatable {}
 
 extension String {
     func extractTwoFactorCodes() -> [String] {

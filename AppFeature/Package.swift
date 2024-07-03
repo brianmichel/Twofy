@@ -13,21 +13,17 @@ let package = Package(
             name: "AppFeature",
             targets: [
                 "AppFeature",
+                "ExtensionMessageBus",
                 "MessageDatabaseListener",
             ]
         ),
+        .library(name: "ExtensionMessageBus", targets: ["ExtensionMessageBus"]),
         .library(name: "MessageDatabaseListener", targets: ["MessageDatabaseListener"])
     ],
     dependencies: [
         .package(url: "https://github.com/groue/GRDB.swift.git", from: "6.27.0"),
     ],
     targets: [
-        .target(
-            name: "MessageDatabaseListener",
-            dependencies: [
-                .product(name: "GRDB", package: "GRDB.swift"),
-            ]
-        ),
         .target(
             name: "AppFeature",
             dependencies: [
@@ -36,5 +32,12 @@ let package = Package(
         .testTarget(
             name: "AppFeatureTests",
             dependencies: ["AppFeature"]),
+        .target(name: "ExtensionMessageBus"),
+        .target(
+            name: "MessageDatabaseListener",
+            dependencies: [
+                .product(name: "GRDB", package: "GRDB.swift"),
+            ]
+        )
     ]
 )

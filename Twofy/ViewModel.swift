@@ -8,22 +8,48 @@
 import AppFeature
 import Foundation
 import MessageDatabaseListener
+import ExtensionMessageBus
+import SwiftUI
 
 final class ViewModel: ObservableObject {
     @Published var messages = [Message]()
-
-    private(set) var listener: MessageDatabaseListener?
-
-    @Published private(set) var findingCodes: Bool = false
-    private var findMessagesTask: Task<Void, (any Error)>?
-
-    func setupListner(for path: URL) throws {
-        listener = try MessageDatabaseListener(path: path)
+    @Published var databaseFolder: URL? {
+        didSet {
+            guard let databaseFolder else { return }
+            setupListner(for: databaseFolder.appending(path: "chat.db", directoryHint: .notDirectory))
+        }
     }
 
-    func startFindingCodes() {
+    @Published var error: (any Error)? = nil
+
+    private(set) var listener: MessageDatabaseListener?
+    private let bus = ExtensionMessageBus()
+
+    @Published var findingCodes: Bool = false {
+        didSet {
+            if findingCodes {
+                startFindingCodes()
+            } else {
+                stopFindingCodes()
+            }
+        }
+    }
+    private var findMessagesTask: Task<Void, (any Error)>?
+
+    func setupListner(for path: URL) {
+        do {
+            listener = try MessageDatabaseListener(path: path)
+            error = nil
+        } catch let error {
+            self.error = error
+        }
+    }
+
+    private func startFindingCodes() {
         guard let listener else { return }
         stopFindingCodes()
+
+        try! bus.start()
 
         findMessagesTask = Task {
             for try await messages in listener.stream {
@@ -33,12 +59,11 @@ final class ViewModel: ObservableObject {
             }
         }
 
-        listener.start(lookback: .days(10))
-        findingCodes = true
+        listener.start(lookback: .days(30))
     }
 
-    func stopFindingCodes() {
-        findingCodes = false
+    private func stopFindingCodes() {
+        bus.stop()
         findMessagesTask?.cancel()
         findMessagesTask = nil
     }
