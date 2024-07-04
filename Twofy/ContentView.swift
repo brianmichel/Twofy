@@ -1,6 +1,7 @@
 import AppFeature
 import MessageDatabaseListener
 import SwiftUI
+import Utilities
 
 final class MessagesDatabaseOnlyDelegate: NSObject, NSOpenSavePanelDelegate {
     private let allowedURL: URL = .messageDatabasePath

@@ -7,9 +7,11 @@
 
 import AppFeature
 import Foundation
+import ManifestInstallerService
 import MessageDatabaseListener
 import ExtensionMessageBus
 import SwiftUI
+import XPCSupport
 
 final class ViewModel: ObservableObject {
     @Published var messages = [Message]()
@@ -25,6 +27,11 @@ final class ViewModel: ObservableObject {
     private(set) var listener: MessageDatabaseListener?
     private let bus = ExtensionMessageBus()
 
+    private let controller = XPCService<ManifestInstallerServiceProtocol>(
+        connection: NSXPCConnection(serviceName: "me.foureyes.Twofy.ManifestInstaller"),
+        interface: NSXPCInterface(with: ManifestInstallerServiceProtocol.self)
+    )
+
     @Published var findingCodes: Bool = false {
         didSet {
             if findingCodes {
@@ -39,6 +46,14 @@ final class ViewModel: ObservableObject {
     func setupListner(for path: URL) {
         do {
             listener = try MessageDatabaseListener(path: path)
+            controller.setup { error in
+                print("got error from XPC service \(error)")
+            }
+            controller.service?.install(for: NativeMessageSource.edge.rawValue, with: { error in
+                if let installerError = error as? ManifestInstallationError {
+                    print("Installer Error \(installerError)")
+                }
+            })
             error = nil
         } catch let error {
             self.error = error

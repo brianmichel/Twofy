@@ -13,7 +13,34 @@
 		7280CC492C286C95001E83DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7280CC482C286C95001E83DD /* Preview Assets.xcassets */; };
 		7280CC532C286E0D001E83DD /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 7280CC522C286E0D001E83DD /* AppFeature */; };
 		7280CC552C2872A5001E83DD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280CC542C2872A5001E83DD /* ViewModel.swift */; };
+		72BCF7C52C3629930087BD73 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BCF7C42C3629930087BD73 /* main.swift */; };
+		72BCF7CA2C3629930087BD73 /* ManifestInstaller.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		72CBBDA12C36418F000B463E /* ManifestInstallerService in Frameworks */ = {isa = PBXBuildFile; productRef = 72CBBDA02C36418F000B463E /* ManifestInstallerService */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		72BCF7C82C3629930087BD73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7280CC362C286C94001E83DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72BCF7BD2C3629930087BD73;
+			remoteInfo = ManifestInstaller;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		72BCF7CE2C3629930087BD73 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				72BCF7CA2C3629930087BD73 /* ManifestInstaller.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7280CC3E2C286C94001E83DD /* Twofy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twofy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +51,10 @@
 		7280CC4A2C286C95001E83DD /* Twofy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Twofy.entitlements; sourceTree = "<group>"; };
 		7280CC502C286CC9001E83DD /* AppFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppFeature; sourceTree = "<group>"; };
 		7280CC542C2872A5001E83DD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = ManifestInstaller.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		72BCF7C42C3629930087BD73 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		72BCF7C62C3629930087BD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72BCF7C72C3629930087BD73 /* ManifestInstaller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManifestInstaller.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +66,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72BCF7BB2C3629930087BD73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CBBDA12C36418F000B463E /* ManifestInstallerService in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -43,6 +82,7 @@
 			children = (
 				7280CC502C286CC9001E83DD /* AppFeature */,
 				7280CC402C286C94001E83DD /* Twofy */,
+				72BCF7BF2C3629930087BD73 /* ManifestInstaller */,
 				7280CC3F2C286C94001E83DD /* Products */,
 				7280CC512C286E0D001E83DD /* Frameworks */,
 			);
@@ -52,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				7280CC3E2C286C94001E83DD /* Twofy.app */,
+				72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,6 +125,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		72BCF7BF2C3629930087BD73 /* ManifestInstaller */ = {
+			isa = PBXGroup;
+			children = (
+				72BCF7C42C3629930087BD73 /* main.swift */,
+				72BCF7C62C3629930087BD73 /* Info.plist */,
+				72BCF7C72C3629930087BD73 /* ManifestInstaller.entitlements */,
+			);
+			path = ManifestInstaller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -94,10 +145,12 @@
 				7280CC3A2C286C94001E83DD /* Sources */,
 				7280CC3B2C286C94001E83DD /* Frameworks */,
 				7280CC3C2C286C94001E83DD /* Resources */,
+				72BCF7CE2C3629930087BD73 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				72BCF7C92C3629930087BD73 /* PBXTargetDependency */,
 			);
 			name = Twofy;
 			packageProductDependencies = (
@@ -106,6 +159,26 @@
 			productName = Twofy;
 			productReference = 7280CC3E2C286C94001E83DD /* Twofy.app */;
 			productType = "com.apple.product-type.application";
+		};
+		72BCF7BD2C3629930087BD73 /* ManifestInstaller */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72BCF7CB2C3629930087BD73 /* Build configuration list for PBXNativeTarget "ManifestInstaller" */;
+			buildPhases = (
+				72BCF7BA2C3629930087BD73 /* Sources */,
+				72BCF7BB2C3629930087BD73 /* Frameworks */,
+				72BCF7BC2C3629930087BD73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ManifestInstaller;
+			packageProductDependencies = (
+				72CBBDA02C36418F000B463E /* ManifestInstallerService */,
+			);
+			productName = ManifestInstaller;
+			productReference = 72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */;
+			productType = "com.apple.product-type.xpc-service";
 		};
 /* End PBXNativeTarget section */
 
@@ -118,6 +191,9 @@
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					7280CC3D2C286C94001E83DD = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					72BCF7BD2C3629930087BD73 = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -136,6 +212,7 @@
 			projectRoot = "";
 			targets = (
 				7280CC3D2C286C94001E83DD /* Twofy */,
+				72BCF7BD2C3629930087BD73 /* ManifestInstaller */,
 			);
 		};
 /* End PBXProject section */
@@ -147,6 +224,13 @@
 			files = (
 				7280CC492C286C95001E83DD /* Preview Assets.xcassets in Resources */,
 				7280CC462C286C95001E83DD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72BCF7BC2C3629930087BD73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +247,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72BCF7BA2C3629930087BD73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72BCF7C52C3629930087BD73 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		72BCF7C92C3629930087BD73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72BCF7BD2C3629930087BD73 /* ManifestInstaller */;
+			targetProxy = 72BCF7C82C3629930087BD73 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7280CC4B2C286C95001E83DD /* Debug */ = {
@@ -287,6 +387,7 @@
 		7280CC4E2C286C95001E83DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Twofy/Twofy.entitlements;
@@ -316,6 +417,7 @@
 		7280CC4F2C286C95001E83DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Twofy/Twofy.entitlements;
@@ -342,6 +444,52 @@
 			};
 			name = Release;
 		};
+		72BCF7CC2C3629930087BD73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ManifestInstaller/ManifestInstaller.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YN24FFRTC8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ManifestInstaller/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ManifestInstaller;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.foureyes.Twofy.ManifestInstaller;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		72BCF7CD2C3629930087BD73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ManifestInstaller/ManifestInstaller.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YN24FFRTC8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ManifestInstaller/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ManifestInstaller;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.foureyes.Twofy.ManifestInstaller;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -363,12 +511,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		72BCF7CB2C3629930087BD73 /* Build configuration list for PBXNativeTarget "ManifestInstaller" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72BCF7CC2C3629930087BD73 /* Debug */,
+				72BCF7CD2C3629930087BD73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		7280CC522C286E0D001E83DD /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
+		};
+		72CBBDA02C36418F000B463E /* ManifestInstallerService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ManifestInstallerService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

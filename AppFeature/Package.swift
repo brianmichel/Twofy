@@ -15,10 +15,14 @@ let package = Package(
                 "AppFeature",
                 "ExtensionMessageBus",
                 "MessageDatabaseListener",
+                "Utilities",
+                "ManifestInstallerService",
             ]
         ),
         .library(name: "ExtensionMessageBus", targets: ["ExtensionMessageBus"]),
-        .library(name: "MessageDatabaseListener", targets: ["MessageDatabaseListener"])
+        .library(name: "MessageDatabaseListener", targets: ["MessageDatabaseListener"]),
+        .library(name: "Utilities", targets: ["Utilities"]),
+        .library(name: "ManifestInstallerService", targets: ["ManifestInstallerService"])
     ],
     dependencies: [
         .package(url: "https://github.com/groue/GRDB.swift.git", from: "6.27.0"),
@@ -38,6 +42,15 @@ let package = Package(
             dependencies: [
                 .product(name: "GRDB", package: "GRDB.swift"),
             ]
-        )
+        ),
+        .target(name: "Utilities"),
+        .target(
+            name: "ManifestInstallerService",
+            dependencies: [
+                "Utilities",
+                "XPCSupport",
+            ]
+        ),
+        .target(name: "XPCSupport")
     ]
 )
