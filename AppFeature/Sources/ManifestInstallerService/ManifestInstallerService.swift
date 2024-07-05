@@ -7,11 +7,18 @@ public class ManifestInstallerService: ManifestInstallerServiceProtocol {
         guard let app = NativeMessageSource(rawValue: applicationID) else { reply(ManifestInstallationError.unableToConvertIDToModel); return  }
 
         let directory = app.installationDirectory
-        let path = directory.appending(path: "hi.txt", directoryHint: .notDirectory)
+        let path = directory.appending(path: "me.foureyes.twofy.json", directoryHint: .notDirectory)
         do {
-            try "hello".write(to: path, atomically: true, encoding: .utf8)
+            let manifest: Manifest = .twofyBrowserSupport
+
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted]
+            let data = try encoder.encode(manifest)
+
+            guard let string = String(data: data, encoding: .utf8) else { reply(ManifestInstallationError.unableToGenerateManifestJSON); return }
+            try string.write(to: path, atomically: true, encoding: .utf8)
             reply(nil)
-        } catch let writeError {
+        } catch {
             reply(ManifestInstallationError.unableToWriteManfiestFile)
         }
     }
@@ -27,6 +34,4 @@ public class ManifestInstallerService: ManifestInstallerServiceProtocol {
             }
         }
     }
-    
-
 }

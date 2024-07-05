@@ -2,9 +2,10 @@ import Foundation
 
 public enum ManifestInstallationError: Int, Error {
     case unknown = -1
-    case installationDirectoryDoesNotExist = 0
-    case unableToWriteManfiestFile = 1
-    case unableToConvertIDToModel = 2
+    case installationDirectoryDoesNotExist
+    case unableToGenerateManifestJSON
+    case unableToWriteManfiestFile
+    case unableToConvertIDToModel
 }
 
 @objc public protocol ManifestInstallerServiceProtocol {
