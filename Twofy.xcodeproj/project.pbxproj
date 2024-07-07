@@ -11,11 +11,13 @@
 		7280CC442C286C94001E83DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280CC432C286C94001E83DD /* ContentView.swift */; };
 		7280CC462C286C95001E83DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7280CC452C286C95001E83DD /* Assets.xcassets */; };
 		7280CC492C286C95001E83DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7280CC482C286C95001E83DD /* Preview Assets.xcassets */; };
-		7280CC532C286E0D001E83DD /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 7280CC522C286E0D001E83DD /* AppFeature */; };
 		7280CC552C2872A5001E83DD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280CC542C2872A5001E83DD /* ViewModel.swift */; };
+		728BD2D22C3A195400AC7BBD /* Features in Resources */ = {isa = PBXBuildFile; fileRef = 728BD2D02C3A195400AC7BBD /* Features */; };
+		728BD2D42C3A196E00AC7BBD /* ManifestInstallerService in Frameworks */ = {isa = PBXBuildFile; productRef = 728BD2D32C3A196E00AC7BBD /* ManifestInstallerService */; };
+		728BD2D72C3A197600AC7BBD /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 728BD2D62C3A197600AC7BBD /* AppFeature */; };
+		728BD2DB2C3A1C4600AC7BBD /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728BD2DA2C3A1C4600AC7BBD /* InstructionsView.swift */; };
 		72BCF7C52C3629930087BD73 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BCF7C42C3629930087BD73 /* main.swift */; };
 		72BCF7CA2C3629930087BD73 /* ManifestInstaller.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		72CBBDA12C36418F000B463E /* ManifestInstallerService in Frameworks */ = {isa = PBXBuildFile; productRef = 72CBBDA02C36418F000B463E /* ManifestInstallerService */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +51,10 @@
 		7280CC452C286C95001E83DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7280CC482C286C95001E83DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7280CC4A2C286C95001E83DD /* Twofy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Twofy.entitlements; sourceTree = "<group>"; };
-		7280CC502C286CC9001E83DD /* AppFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppFeature; sourceTree = "<group>"; };
 		7280CC542C2872A5001E83DD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		728BD2D02C3A195400AC7BBD /* Features */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Features; sourceTree = "<group>"; };
+		728BD2D52C3A197200AC7BBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		728BD2DA2C3A1C4600AC7BBD /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 		72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = ManifestInstaller.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		72BCF7C42C3629930087BD73 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		72BCF7C62C3629930087BD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7280CC532C286E0D001E83DD /* AppFeature in Frameworks */,
+				728BD2D72C3A197600AC7BBD /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72CBBDA12C36418F000B463E /* ManifestInstallerService in Frameworks */,
+				728BD2D42C3A196E00AC7BBD /* ManifestInstallerService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +84,7 @@
 		7280CC352C286C94001E83DD = {
 			isa = PBXGroup;
 			children = (
-				7280CC502C286CC9001E83DD /* AppFeature */,
+				728BD2D12C3A195400AC7BBD /* Frameworks */,
 				7280CC402C286C94001E83DD /* Twofy */,
 				72BCF7BF2C3629930087BD73 /* ManifestInstaller */,
 				7280CC3F2C286C94001E83DD /* Products */,
@@ -100,12 +104,10 @@
 		7280CC402C286C94001E83DD /* Twofy */ = {
 			isa = PBXGroup;
 			children = (
+				728BD2D92C3A1A8000AC7BBD /* Resources */,
+				728BD2D82C3A1A7200AC7BBD /* Main Window */,
 				7280CC412C286C94001E83DD /* TwofyApp.swift */,
-				7280CC432C286C94001E83DD /* ContentView.swift */,
-				7280CC452C286C95001E83DD /* Assets.xcassets */,
-				7280CC4A2C286C95001E83DD /* Twofy.entitlements */,
 				7280CC472C286C95001E83DD /* Preview Content */,
-				7280CC542C2872A5001E83DD /* ViewModel.swift */,
 			);
 			path = Twofy;
 			sourceTree = "<group>";
@@ -123,6 +125,34 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		728BD2D12C3A195400AC7BBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				728BD2D02C3A195400AC7BBD /* Features */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		728BD2D82C3A1A7200AC7BBD /* Main Window */ = {
+			isa = PBXGroup;
+			children = (
+				7280CC432C286C94001E83DD /* ContentView.swift */,
+				7280CC542C2872A5001E83DD /* ViewModel.swift */,
+				728BD2DA2C3A1C4600AC7BBD /* InstructionsView.swift */,
+			);
+			path = "Main Window";
+			sourceTree = "<group>";
+		};
+		728BD2D92C3A1A8000AC7BBD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7280CC4A2C286C95001E83DD /* Twofy.entitlements */,
+				7280CC452C286C95001E83DD /* Assets.xcassets */,
+				728BD2D52C3A197200AC7BBD /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		72BCF7BF2C3629930087BD73 /* ManifestInstaller */ = {
@@ -154,7 +184,7 @@
 			);
 			name = Twofy;
 			packageProductDependencies = (
-				7280CC522C286E0D001E83DD /* AppFeature */,
+				728BD2D62C3A197600AC7BBD /* AppFeature */,
 			);
 			productName = Twofy;
 			productReference = 7280CC3E2C286C94001E83DD /* Twofy.app */;
@@ -174,7 +204,7 @@
 			);
 			name = ManifestInstaller;
 			packageProductDependencies = (
-				72CBBDA02C36418F000B463E /* ManifestInstallerService */,
+				728BD2D32C3A196E00AC7BBD /* ManifestInstallerService */,
 			);
 			productName = ManifestInstaller;
 			productReference = 72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */;
@@ -222,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				728BD2D22C3A195400AC7BBD /* Features in Resources */,
 				7280CC492C286C95001E83DD /* Preview Assets.xcassets in Resources */,
 				7280CC462C286C95001E83DD /* Assets.xcassets in Resources */,
 			);
@@ -242,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7280CC442C286C94001E83DD /* ContentView.swift in Sources */,
+				728BD2DB2C3A1C4600AC7BBD /* InstructionsView.swift in Sources */,
 				7280CC552C2872A5001E83DD /* ViewModel.swift in Sources */,
 				7280CC422C286C94001E83DD /* TwofyApp.swift in Sources */,
 			);
@@ -390,7 +422,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Twofy/Twofy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Twofy/Resources/Twofy.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -400,6 +432,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Twofy/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -420,7 +453,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Twofy/Twofy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Twofy/Resources/Twofy.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -430,6 +463,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Twofy/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -523,13 +557,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7280CC522C286E0D001E83DD /* AppFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = AppFeature;
-		};
-		72CBBDA02C36418F000B463E /* ManifestInstallerService */ = {
+		728BD2D32C3A196E00AC7BBD /* ManifestInstallerService */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ManifestInstallerService;
+		};
+		728BD2D62C3A197600AC7BBD /* AppFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

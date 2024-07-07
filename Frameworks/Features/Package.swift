@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "AppFeature",
+    name: "Features",
     platforms: [
         .macOS(.v13)
     ],

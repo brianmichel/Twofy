@@ -6,7 +6,7 @@ extension URL {
         URL(fileURLWithFileSystemRepresentation: getpwuid(getuid()).pointee.pw_dir, isDirectory: true, relativeTo: nil)
     }
 
-    /// Returns `~/Library/Messages`
+    /// Returns `~/Library/Messages` expanded to the full path outside of a container.
     public static var messageDatabasePath: URL {
         .realHomeDirectory
         .appending(path: "Library", directoryHint: .isDirectory)
