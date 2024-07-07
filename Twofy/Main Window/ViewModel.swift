@@ -11,7 +11,10 @@ import ManifestInstallerService
 import MessageDatabaseListener
 import ExtensionMessageBus
 import SwiftUI
+import Utilities
 import XPCSupport
+
+let logger = Logger.for(category: "ViewModel")
 
 final class ViewModel: ObservableObject {
     @Published var messages = [Message]()
@@ -47,11 +50,11 @@ final class ViewModel: ObservableObject {
         do {
             listener = try MessageDatabaseListener(path: path)
             controller.setup { error in
-                print("got error from XPC service \(error)")
+                logger.error("got error from XPC service \(error)")
             }
             controller.service?.install(for: NativeMessageSource.edge.rawValue, with: { error in
                 if let installerError = error as? ManifestInstallationError {
-                    print("Installer Error \(installerError)")
+                    logger.error("Installer Error \(installerError)")
                 }
             })
             error = nil

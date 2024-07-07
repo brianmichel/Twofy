@@ -1,6 +1,8 @@
 import Foundation
 import Utilities
 
+let logger = Logger.for(category: "ExtensionMessageBus")
+
 public final class ExtensionMessageBus {
     private var task: Task<Void, (any Error)>?
 
@@ -26,7 +28,7 @@ public final class ExtensionMessageBus {
                 }
 
                 // Process the input
-                print("Received message: \(input)")
+                logger.info("Received message: \(input)")
 
                 // You can process the input here and send a response if needed
                 let response = ["response": "Message received"]
@@ -56,7 +58,7 @@ public final class ExtensionMessageBus {
                 return jsonObject
             }
         } catch {
-            print("Error parsing JSON: \(error)")
+            logger.error("Error parsing JSON: \(error)")
         }
 
         return nil
@@ -71,7 +73,7 @@ public final class ExtensionMessageBus {
             try output.write(contentsOf: headerData)
             try output.write(contentsOf: jsonData)
         } catch {
-            print("Error sending message: \(error)")
+            logger.error("Error sending message: \(error)")
         }
     }
 }
