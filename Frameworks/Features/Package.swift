@@ -36,7 +36,10 @@ let package = Package(
         .testTarget(
             name: "AppFeatureTests",
             dependencies: ["AppFeature"]),
-        .target(name: "ExtensionMessageBus"),
+        .target(
+            name: "ExtensionMessageBus",
+            dependencies: ["Utilities"]),
+        .testTarget(name: "ExtensionMessageBusTests", dependencies: ["ExtensionMessageBus"]),
         .target(
             name: "MessageDatabaseListener",
             dependencies: [

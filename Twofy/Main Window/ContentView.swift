@@ -24,18 +24,6 @@ struct ContentView: View {
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                     .background(Rectangle().fill(Color.red))
             }
-            HStack {
-                Text(viewModel.databaseFolder?.path(percentEncoded: false) ?? "No folder selected")
-                    .monospaced()
-                Spacer()
-                Toggle(isOn: $viewModel.findingCodes, label: {
-                    Text("Monitor")
-                })
-                .toggleStyle(.switch)
-                .disabled(viewModel.listener == nil)
-            }
-            .padding(.horizontal)
-            .padding(.top, 10)
             GroupBox {
                 if viewModel.databaseFolder == nil {
                     InstructionsView {
@@ -55,8 +43,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .padding(.horizontal)
-            .padding(.bottom)
+            .padding()
         }.overlay(
             OpenPanel(
                 isPresented: $openPanelPresented,
@@ -73,6 +60,18 @@ struct ContentView: View {
             // events make their way to the various cells.
             .disabled(true)
         )
+        .toolbar {
+            ToolbarItemGroup {
+                Toggle(isOn: $viewModel.findingCodes, label: {
+                    Text(viewModel.findingCodes ? "Stop Polling" : "Start Polling")
+                })
+                .disabled(viewModel.listener == nil)
+                .help("Toggle polling for new 2FA codes.")
+            }
+        }
+        #if DEBUG
+        .background(.red.opacity(0.4))
+        #endif
     }
 
     private func noCodesView() -> some View {

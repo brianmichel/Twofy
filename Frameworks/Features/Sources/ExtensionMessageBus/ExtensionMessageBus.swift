@@ -1,19 +1,16 @@
-//
-//  File.swift
-//  
-//
-//  Created by Brian Michel on 6/27/24.
-//
-
 import Foundation
+import Utilities
 
 public final class ExtensionMessageBus {
     private var task: Task<Void, (any Error)>?
 
-    private let input = FileHandle.standardInput
-    private let output = FileHandle.standardOutput
+    private let input: FileHandle
+    private let output: FileHandle
 
-    public init() {}
+    public init(input: FileHandle = .standardInput, output: FileHandle = .standardOutput) {
+        self.input = input
+        self.output = output
+    }
 
     public func start() throws {
         stop()
@@ -38,13 +35,12 @@ public final class ExtensionMessageBus {
         task = nil
     }
 
-    private func receive() throws -> [String: Any]? {
-        guard let lengthData = try input.read(upToCount: 4) else {
+    internal func receive() throws -> [String: Any]? {
+        guard let lengthData = try input.read(upToCount: .messageHeaderLength) else {
             return nil
         }
 
-        let messageLength = lengthData.withUnsafeBytes { $0.load(as: UInt32.self) }
-        guard let messageData = try input.read(upToCount: Int(messageLength)) else {
+        guard  let messageLength = lengthData.toUInt32(), let messageData = try input.read(upToCount: Int(messageLength)) else {
             return nil
         }
 
@@ -59,11 +55,11 @@ public final class ExtensionMessageBus {
         return nil
     }
 
-    private func send(_ message: [String: Any]) {
+    internal func send(_ message: [String: Any]) {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: message, options: [])
             let messageLength = UInt32(jsonData.count)
-            let headerData = withUnsafeBytes(of: messageLength.bigEndian) { Data($0) }
+            let headerData = withUnsafeBytes(of: messageLength) { Data($0) }
 
             try output.write(contentsOf: headerData)
             try output.write(contentsOf: jsonData)

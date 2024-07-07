@@ -16,6 +16,10 @@ public enum ExtensionMessage: Equatable, Sendable {
     case pollingTimeout
 }
 
+extension Int {
+    static let messageHeaderLength: Self = 4
+}
+
 extension ExtensionMessage {
     var actionJSON: [String: Any] {
         switch self {

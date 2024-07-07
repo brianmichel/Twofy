@@ -17,7 +17,6 @@ struct InstructionsView: View {
                 Button("Grant Access To Messages")
                 {
                     grantAccessClicked()
-
                 }
                 Spacer()
             }
@@ -42,7 +41,7 @@ struct InstructionsView: View {
         HStack(alignment: .firstTextBaseline) {
             Text("\(index)")
                 .frame(width: 20, height: 20)
-                .background(Color(nsColor: .controlBackgroundColor))
+                .background(Color(nsColor: .controlBackgroundColor), in: Circle())
                 .clipShape(Circle())
             VStack(alignment: .leading) {
                 Text(text)
