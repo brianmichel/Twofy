@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Brian Michel on 6/27/24.
-//
-
 import Foundation
 
 public enum ExtensionMessage: Equatable, Sendable {

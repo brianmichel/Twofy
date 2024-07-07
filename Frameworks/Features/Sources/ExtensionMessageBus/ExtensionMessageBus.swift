@@ -7,6 +7,8 @@ public final class ExtensionMessageBus {
     private let input: FileHandle
     private let output: FileHandle
 
+    private var dataAvailableToken: Any?
+
     public init(input: FileHandle = .standardInput, output: FileHandle = .standardOutput) {
         self.input = input
         self.output = output
@@ -14,10 +16,13 @@ public final class ExtensionMessageBus {
 
     public func start() throws {
         stop()
+
         task = Task {
-            while !Task.isCancelled {
+            for await _ in NotificationCenter.default.notifications(named: .NSFileHandleDataAvailable, object: input) {
+                defer { input.waitForDataInBackgroundAndNotify() }
+
                 guard let input = try receive() else {
-                    break
+                    continue
                 }
 
                 // Process the input
@@ -28,6 +33,8 @@ public final class ExtensionMessageBus {
                 send(response)
             }
         }
+
+        input.waitForDataInBackgroundAndNotify()
     }
 
     public func stop() {

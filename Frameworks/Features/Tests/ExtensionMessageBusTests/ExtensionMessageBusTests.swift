@@ -44,4 +44,25 @@ final class ExtensionMessageBusTests: XCTestCase {
 
         XCTAssertEqual(inputData, receivedData)
     }
+
+    func testMessagesAreAutomaticallyProcessedAndRepliedToWhenBusIsStarted() async throws {
+        let pipe = Pipe()
+        let output = pipe.fileHandleForWriting
+        let input = pipe.fileHandleForReading
+
+        let inputJSONObject = ExtensionMessage.code("2233").actionJSON
+
+        let sut = ExtensionMessageBus(input: input, output: output)
+        try sut.start()
+
+        let expectation = expectation(forNotification: .NSFileHandleDataAvailable, object: input)
+
+        sut.send(inputJSONObject)
+
+        await fulfillment(of: [expectation], timeout: 2.0)
+
+        let json = try XCTUnwrap(sut.receive())
+
+        XCTAssertNotNil(json)
+    }
 }
