@@ -3,7 +3,5 @@
   "description": "Twofy Message Bridge",
   "path": "/Users/brianmichel/Library/Developer/Xcode/DerivedData/Twofy-hhmejrgywbdvwdfpwbaqramrbgzn/Build/Products/Debug/Twofy.app/Contents/MacOS/Twofy",
   "type": "stdio",
-  "allowed_origins": [
-    "chrome-extension://dmlknddeegiihclfnlcgpnekbgahbime/"
-  ]
+  "allowed_origins": ["chrome-extension://dmlknddeegiihclfnlcgpnekbgahbime/"]
 }

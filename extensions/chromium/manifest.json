@@ -3,24 +3,16 @@
   "name": "Twofy Messaging Bridge",
   "version": "1.0",
   "description": "Communicates with the Twofy native desktop application.",
-  "permissions": [
-    "nativeMessaging"
-  ],
+  "permissions": ["nativeMessaging"],
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
   "content_scripts": [
     {
-      "css": [
-        "content.css"
-      ],
-      "js": [
-        "content.js"
-      ],
-      "matches": [
-        "<all_urls>"
-      ]
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "matches": ["<all_urls>"]
     }
   ]
 }

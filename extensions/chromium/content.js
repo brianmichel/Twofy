@@ -1,19 +1,17 @@
-const IS_DEV_MODE = !('update_url' in chrome.runtime.getManifest());
+const IS_DEV_MODE = !("update_url" in chrome.runtime.getManifest());
 
 if (IS_DEV_MODE) {
   // If we're in dev, just show the banner just after loading a page.
   setTimeout(() => {
-    showAutofill('223344');
-}, 1000);
+    showAutofill("223344");
+  }, 1000);
 }
 
-chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-        if (request.event == 'code') {
-            showAutocomplete(request.data);
-        }
-    }
-);
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  if (request.event == "code") {
+    showAutocomplete(request.data);
+  }
+});
 
 function showAutofill(code) {
   let autofillElement = new TwoFactorAutofillCodeBanner(code);
@@ -25,7 +23,7 @@ function showAutofill(code) {
 // of `[type=text]` and `[inputmode=numeric]`
 class TwoFactorAutofillCodeBanner {
   constructor(code) {
-    this.showing = false
+    this.showing = false;
     this.code = code;
     this.abortController = new AbortController();
 
@@ -33,7 +31,9 @@ class TwoFactorAutofillCodeBanner {
     // so that we filter down the list of potential inputs as the type
     // is extremely common and can trigger false positives.
     // TODO: Should we further filter this to look for a pattern?
-    this.inputs = document.querySelectorAll("input[type=text][inputmode=numeric]");
+    this.inputs = document.querySelectorAll(
+      "input[type=text][inputmode=numeric]"
+    );
     this.element = document.createElement("div");
     this.element.classList.add("twofy-banner");
     this.element.innerHTML = `
@@ -46,7 +46,7 @@ class TwoFactorAutofillCodeBanner {
         </div>
       </div>
     </div>
-    `
+    `;
     this._insertAutofillElement(this.inputs);
     this.present();
 
@@ -57,16 +57,20 @@ class TwoFactorAutofillCodeBanner {
   }
 
   present() {
-    if (this.showing) { return; }
+    if (this.showing) {
+      return;
+    }
     this._show(this.inputs[0]);
     this.showing = true;
   }
 
   dismiss() {
-    if (!this.showing) { return; }
+    if (!this.showing) {
+      return;
+    }
 
     if (this.element) {
-      this.element.removeEventListener('mousedown', this._insertCode);
+      this.element.removeEventListener("mousedown", this._insertCode);
       this.element.remove();
     }
     this.activeInputElement = null;
@@ -82,9 +86,13 @@ class TwoFactorAutofillCodeBanner {
   // SECTION: Internal Functions
 
   _insertAutofillElement(inputs) {
-    inputs.forEach(input => {
-      input.addEventListener('focus', this.present.bind(this), { signal: this.abortController.signal })
-      input.addEventListener('blur', this.dismiss.bind(this), { signal: this.abortController.signal });
+    inputs.forEach((input) => {
+      input.addEventListener("focus", this.present.bind(this), {
+        signal: this.abortController.signal,
+      });
+      input.addEventListener("blur", this.dismiss.bind(this), {
+        signal: this.abortController.signal,
+      });
       this._focusInputIfPossible(input);
     });
   }
@@ -99,7 +107,11 @@ class TwoFactorAutofillCodeBanner {
   _show(input) {
     this.activeInputElement = input;
     const inputClientRect = input.getBoundingClientRect();
-    this.element.addEventListener('mousedown', this._insertCode.bind(this), true);
+    this.element.addEventListener(
+      "mousedown",
+      this._insertCode.bind(this),
+      true
+    );
     this.element.style.top = `${inputClientRect.bottom}px`;
     this.element.style.left = `${inputClientRect.left}px`;
 
