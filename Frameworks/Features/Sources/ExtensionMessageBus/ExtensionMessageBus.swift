@@ -64,7 +64,7 @@ public final class ExtensionMessageBus {
         return nil
     }
 
-    internal func send(_ message: [String: Any]) {
+    public func send(_ message: [String: Any]) {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: message, options: [])
             let messageLength = UInt32(jsonData.count)

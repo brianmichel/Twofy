@@ -108,6 +108,9 @@ struct ContentView: View {
                 hoveredCell = hovering ? message.id : -1
             }
         })
+        .onTapGesture {
+            viewModel.send(code: message.extractedCode()!)
+        }
     }
 
     private func formattedDate(_ date: Date) -> String {

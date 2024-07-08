@@ -63,6 +63,10 @@ final class ViewModel: ObservableObject {
         }
     }
 
+    func send(code: String) {
+        bus.send(ExtensionMessage.code(code).actionJSON)
+    }
+
     private func startFindingCodes() {
         guard let listener else { return }
         stopFindingCodes()

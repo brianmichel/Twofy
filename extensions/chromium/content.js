@@ -8,8 +8,8 @@ if (IS_DEV_MODE) {
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.event == "code") {
-    showAutocomplete(request.data);
+  if (request.action == "code") {
+    showAutofill(request.data);
   }
 });
 
@@ -50,10 +50,10 @@ class TwoFactorAutofillCodeBanner {
     this._insertAutofillElement(this.inputs);
     this.present();
 
-    // Schedule the destruction of this banner in 20 seconds
+    // Schedule the destruction of this banner in 10 seconds
     // after it is first presented.
     // TODO: How could/should this be adjustable?
-    setTimeout(this.destroy.bind(this), 20_000);
+    setTimeout(this.destroy.bind(this), 10_000);
   }
 
   present() {
