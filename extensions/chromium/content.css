@@ -1,0 +1,88 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.twofy-banner {
+  color-scheme: light dark;
+
+  position: fixed;
+  /*
+  This is the maximum z-index we can set to ensure
+  we float above any other element that might be on screen.
+  */
+  z-index: 2147483648 !important;
+  user-select: none;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji";
+  cursor: pointer;
+
+  opacity: 1;
+}
+
+.twofy-banner.animate {
+  animation: fadeIn 200ms ease-in-out;
+  animation-iteration-count: 1;
+}
+
+.twofy-autofill-container {
+  padding: 6px;
+
+  box-sizing: content-box !important;
+
+  background-color: light-dark(#eaebea, #565656);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid light-dark(rgba(255, 255, 255, 0), #838484);
+  outline: 0.5px solid light-dark(#b7b7b7, #000);
+
+  color: light-dark(#494949, #efefef);
+  box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 8px 8px 8px;
+  display: flex;
+}
+
+.twofy-code-icon {
+  margin: 0px 5px 0px 0px;
+  padding: 0px;
+  /*
+    We've base64 encoded an svg to make it easily portable across
+    implementations, maybe we should use something a bit smaller?
+  */
+  background-image: url("data:image/svg+xml;base64, PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyAgUFVCTElDICctLy9XM0MvL0RURCBTVkcgMS4xLy9FTicgICdodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQnPgo8c3ZnIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDk5LjYwOSA5OS42NTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI5OS42MDkiIGhlaWdodD0iOTkuNjU4IiBvcGFjaXR5PSIwIi8+CjxwYXRoIGQ9Im00OS44MDUgOTkuNjU4YzI3LjI0NiAwIDQ5LjgwNS0yMi41NTkgNDkuODA1LTQ5LjgwNSAwLTI3LjE5Ny0yMi42MDctNDkuODA1LTQ5Ljg1NC00OS44MDUtMjcuMTk3IDAtNDkuNzU2IDIyLjYwNy00OS43NTYgNDkuODA1IDAgMjcuMjQ2IDIyLjYwNyA0OS44MDUgNDkuODA1IDQ5LjgwNXoiIGZpbGw9IiMyOGNkNDEiLz4KPHBhdGggZD0ibTQ5LjgwNSA3MS4wOTRjLTEuMTIzMSAwLTIuMTQ4NS0wLjA0ODktMy4xMjUtMC4wOTc3LTAuNTM3MS0wLjA0ODgtMC44MzAxIDAuMDk3Ny0xLjM2NzIgMC40ODgzLTQuOTgwNSAyLjk3ODUtMTAuMDEgNS4wNzgxLTEyLjc5MyA1LjA3ODEtMi4xOTcyIDAtMi41ODc5LTEuNzA5LTEuMTcxOC0zLjM2OTEgMS4wMjUzLTEuMTcxOSAyLjQ5MDItMi43MzQ0IDMuMzIwMy00LjM5NDYgMC4yOTI5LTAuNTM3MSAwLjI5MjktMS4xMjMtMC4zNDE4LTEuNDY0OC03LjM3MzEtNC4yOTY5LTEyLjM1NC0xMS4wODQtMTIuMzU0LTE4Ljk5NCAwLTEyLjU0OSAxMi4yMDctMjIuNzA1IDI3LjgzMi0yMi43MDVzMjcuODMyIDEwLjE1NiAyNy44MzIgMjIuNzA1YzAgMTIuNTQ5LTEyLjIwNyAyMi43NTQtMjcuODMyIDIyLjc1NHoiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg==");
+  background-repeat: no-repeat;
+  width: 40px;
+}
+
+.twofy-autofill-content {
+  display: flex;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.twofy-autofill-content:hover {
+  background-color: light-dark(#517de0, #517de0);
+  color: #fff;
+}
+
+.twofy-code-container {
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+}
+
+.twofy-code-container > p {
+  margin: 0px;
+}
+
+.twofy-fill-code {
+  font-size: 15px;
+}
+
+.twofy-source-app {
+  font-size: 13px;
+}
