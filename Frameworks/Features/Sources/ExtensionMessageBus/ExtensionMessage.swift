@@ -14,7 +14,7 @@ extension Int {
 }
 
 extension ExtensionMessage {
-    public var actionJSON: [String: Any] {
+    public var json: [String: Any] {
         switch self {
         case let .unknown(data):
             return [

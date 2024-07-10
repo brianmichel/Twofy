@@ -9,32 +9,47 @@ public final class ExtensionMessageBus {
     private let input: FileHandle
     private let output: FileHandle
 
-    private var dataAvailableToken: Any?
-
     public init(input: FileHandle = .standardInput, output: FileHandle = .standardOutput) {
         self.input = input
         self.output = output
     }
 
     public func start() throws {
+        logger.info("Starting to listen for data")
         stop()
 
-        task = Task {
-            for await _ in NotificationCenter.default.notifications(named: .NSFileHandleDataAvailable, object: input) {
-                defer { input.waitForDataInBackgroundAndNotify() }
+        input.readabilityHandler = { [weak self] handle in
+            guard let self else { return }
+            logger.info("Data available!!!")
 
-                guard let input = try receive() else {
-                    continue
-                }
-
-                // Process the input
-                logger.info("Received message: \(input)")
-
-                // You can process the input here and send a response if needed
-                let response = ["response": "Message received"]
-                send(response)
+            guard let input = try! receive() else {
+                return
             }
+
+            // Process the input
+            logger.info("Received message: \(input)")
+
+            // You can process the input here and send a response if needed
+            let response = ["response": "Message received"]
+            send(response)
         }
+
+//        task = Task {
+//            for await _ in NotificationCenter.default.notifications(named: .NSFileHandleDataAvailable, object: nil) {
+//                defer { input.waitForDataInBackgroundAndNotify() }
+//
+//                guard let input = try receive() else {
+//                    continue
+//                }
+//
+//                // Process the input
+//                logger.info("Received message: \(input)")
+//
+//                // You can process the input here and send a response if needed
+//                let response = ["response": "Message received"]
+//                send(response)
+//            }
+//        }
 
         input.waitForDataInBackgroundAndNotify()
     }
@@ -42,6 +57,10 @@ public final class ExtensionMessageBus {
     public func stop() {
         task?.cancel()
         task = nil
+    }
+
+    public func send(_ message: ExtensionMessage) {
+        send(message.json)
     }
 
     internal func receive() throws -> [String: Any]? {
@@ -64,7 +83,7 @@ public final class ExtensionMessageBus {
         return nil
     }
 
-    public func send(_ message: [String: Any]) {
+    internal func send(_ message: [String: Any]) {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: message, options: [])
             let messageLength = UInt32(jsonData.count)

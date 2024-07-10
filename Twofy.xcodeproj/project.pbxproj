@@ -18,15 +18,51 @@
 		728BD2DB2C3A1C4600AC7BBD /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728BD2DA2C3A1C4600AC7BBD /* InstructionsView.swift */; };
 		72BCF7C52C3629930087BD73 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BCF7C42C3629930087BD73 /* main.swift */; };
 		72BCF7CA2C3629930087BD73 /* ManifestInstaller.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		72CF54542C3CDE980071DA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF54532C3CDE980071DA59 /* AppDelegate.swift */; };
+		72CF54562C3CDE990071DA59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72CF54552C3CDE990071DA59 /* Assets.xcassets */; };
+		72CF54592C3CDE990071DA59 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72CF54582C3CDE990071DA59 /* Base */; };
+		72CF54612C3CDEB50071DA59 /* Twofy Browser Support.app in Copy Browser Support */ = {isa = PBXBuildFile; fileRef = 72CF54512C3CDE980071DA59 /* Twofy Browser Support.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		72CF54632C3CDEDC0071DA59 /* BrowserSupportService in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54622C3CDEDC0071DA59 /* BrowserSupportService */; };
+		72CF54652C3CDFAB0071DA59 /* ExtensionMessageBus in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54642C3CDFAB0071DA59 /* ExtensionMessageBus */; };
+		72CF54702C3E11DF0071DA59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF546F2C3E11DF0071DA59 /* AppDelegate.swift */; };
+		72CF54722C3E11E00071DA59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72CF54712C3E11E00071DA59 /* Assets.xcassets */; };
+		72CF54752C3E11E00071DA59 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 72CF54742C3E11E00071DA59 /* Base */; };
+		72CF547C2C3E124C0071DA59 /* Twofy Service Broker.app in Copy Serivce Broker */ = {isa = PBXBuildFile; fileRef = 72CF546D2C3E11DE0071DA59 /* Twofy Service Broker.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		72CF547E2C3E15230071DA59 /* TwofyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF547D2C3E15230071DA59 /* TwofyAppDelegate.swift */; };
+		72CF54802C3E16CC0071DA59 /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF547F2C3E16CC0071DA59 /* Utilities */; };
+		72CF54822C3E16CF0071DA59 /* ServiceBrokerService in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54812C3E16CF0071DA59 /* ServiceBrokerService */; };
+		72CF54842C3E1B200071DA59 /* XPCSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54832C3E1B200071DA59 /* XPCSupport */; };
+		72CF54862C3E1C6E0071DA59 /* ServiceBrokerService in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54852C3E1C6E0071DA59 /* ServiceBrokerService */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		728BD3032C3CD39900AC7BBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7280CC362C286C94001E83DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72CF54502C3CDE980071DA59;
+			remoteInfo = BrowserSupport;
+		};
 		72BCF7C82C3629930087BD73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7280CC362C286C94001E83DD /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 72BCF7BD2C3629930087BD73;
 			remoteInfo = ManifestInstaller;
+		};
+		72CF54382C3CD3A80071DA59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7280CC362C286C94001E83DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72CF54502C3CDE980071DA59;
+			remoteInfo = BrowserSupport;
+		};
+		72CF545F2C3CDEAB0071DA59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7280CC362C286C94001E83DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72CF54502C3CDE980071DA59;
+			remoteInfo = "Twofy Browser Support";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -40,6 +76,28 @@
 				72BCF7CA2C3629930087BD73 /* ManifestInstaller.xpc in Embed XPC Services */,
 			);
 			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CF543A2C3CD3C50071DA59 /* Copy Browser Support */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Helpers;
+			dstSubfolderSpec = 1;
+			files = (
+				72CF54612C3CDEB50071DA59 /* Twofy Browser Support.app in Copy Browser Support */,
+			);
+			name = "Copy Browser Support";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CF547A2C3E12360071DA59 /* Copy Serivce Broker */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				72CF547C2C3E124C0071DA59 /* Twofy Service Broker.app in Copy Serivce Broker */,
+			);
+			name = "Copy Serivce Broker";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -59,6 +117,18 @@
 		72BCF7C42C3629930087BD73 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		72BCF7C62C3629930087BD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72BCF7C72C3629930087BD73 /* ManifestInstaller.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManifestInstaller.entitlements; sourceTree = "<group>"; };
+		72CF54512C3CDE980071DA59 /* Twofy Browser Support.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twofy Browser Support.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72CF54532C3CDE980071DA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		72CF54552C3CDE990071DA59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72CF54582C3CDE990071DA59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		72CF545A2C3CDE990071DA59 /* BrowserSupport.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BrowserSupport.entitlements; sourceTree = "<group>"; };
+		72CF54682C3E0A970071DA59 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		72CF546D2C3E11DE0071DA59 /* Twofy Service Broker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twofy Service Broker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72CF546F2C3E11DF0071DA59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		72CF54712C3E11E00071DA59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		72CF54742C3E11E00071DA59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		72CF54762C3E11E00071DA59 /* ServiceBroker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ServiceBroker.entitlements; sourceTree = "<group>"; };
+		72CF547D2C3E15230071DA59 /* TwofyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwofyAppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,15 +148,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72CF544E2C3CDE980071DA59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CF54632C3CDEDC0071DA59 /* BrowserSupportService in Frameworks */,
+				72CF54842C3E1B200071DA59 /* XPCSupport in Frameworks */,
+				72CF54652C3CDFAB0071DA59 /* ExtensionMessageBus in Frameworks */,
+				72CF54862C3E1C6E0071DA59 /* ServiceBrokerService in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CF546A2C3E11DE0071DA59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CF54802C3E16CC0071DA59 /* Utilities in Frameworks */,
+				72CF54822C3E16CF0071DA59 /* ServiceBrokerService in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		7280CC352C286C94001E83DD = {
 			isa = PBXGroup;
 			children = (
+				72CF54672C3E074E0071DA59 /* Services */,
+				72CF54662C3E073C0071DA59 /* Apps */,
 				728BD2D12C3A195400AC7BBD /* Frameworks */,
-				7280CC402C286C94001E83DD /* Twofy */,
-				72BCF7BF2C3629930087BD73 /* ManifestInstaller */,
 				7280CC3F2C286C94001E83DD /* Products */,
 				7280CC512C286E0D001E83DD /* Frameworks */,
 			);
@@ -97,6 +187,8 @@
 			children = (
 				7280CC3E2C286C94001E83DD /* Twofy.app */,
 				72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */,
+				72CF54512C3CDE980071DA59 /* Twofy Browser Support.app */,
+				72CF546D2C3E11DE0071DA59 /* Twofy Service Broker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +200,8 @@
 				728BD2D82C3A1A7200AC7BBD /* Main Window */,
 				7280CC412C286C94001E83DD /* TwofyApp.swift */,
 				7280CC472C286C95001E83DD /* Preview Content */,
+				72CF54682C3E0A970071DA59 /* README.md */,
+				72CF547D2C3E15230071DA59 /* TwofyAppDelegate.swift */,
 			);
 			path = Twofy;
 			sourceTree = "<group>";
@@ -165,6 +259,46 @@
 			path = ManifestInstaller;
 			sourceTree = "<group>";
 		};
+		72CF54522C3CDE980071DA59 /* BrowserSupport */ = {
+			isa = PBXGroup;
+			children = (
+				72CF54532C3CDE980071DA59 /* AppDelegate.swift */,
+				72CF54552C3CDE990071DA59 /* Assets.xcassets */,
+				72CF54572C3CDE990071DA59 /* MainMenu.xib */,
+				72CF545A2C3CDE990071DA59 /* BrowserSupport.entitlements */,
+			);
+			path = BrowserSupport;
+			sourceTree = "<group>";
+		};
+		72CF54662C3E073C0071DA59 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				72CF546E2C3E11DF0071DA59 /* ServiceBroker */,
+				7280CC402C286C94001E83DD /* Twofy */,
+				72CF54522C3CDE980071DA59 /* BrowserSupport */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		72CF54672C3E074E0071DA59 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				72BCF7BF2C3629930087BD73 /* ManifestInstaller */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		72CF546E2C3E11DF0071DA59 /* ServiceBroker */ = {
+			isa = PBXGroup;
+			children = (
+				72CF546F2C3E11DF0071DA59 /* AppDelegate.swift */,
+				72CF54712C3E11E00071DA59 /* Assets.xcassets */,
+				72CF54732C3E11E00071DA59 /* MainMenu.xib */,
+				72CF54762C3E11E00071DA59 /* ServiceBroker.entitlements */,
+			);
+			path = ServiceBroker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,11 +310,16 @@
 				7280CC3B2C286C94001E83DD /* Frameworks */,
 				7280CC3C2C286C94001E83DD /* Resources */,
 				72BCF7CE2C3629930087BD73 /* Embed XPC Services */,
+				72CF543A2C3CD3C50071DA59 /* Copy Browser Support */,
+				72CF547A2C3E12360071DA59 /* Copy Serivce Broker */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				72BCF7C92C3629930087BD73 /* PBXTargetDependency */,
+				728BD3042C3CD39900AC7BBD /* PBXTargetDependency */,
+				72CF54392C3CD3A80071DA59 /* PBXTargetDependency */,
+				72CF54602C3CDEAB0071DA59 /* PBXTargetDependency */,
 			);
 			name = Twofy;
 			packageProductDependencies = (
@@ -210,6 +349,50 @@
 			productReference = 72BCF7BE2C3629930087BD73 /* ManifestInstaller.xpc */;
 			productType = "com.apple.product-type.xpc-service";
 		};
+		72CF54502C3CDE980071DA59 /* Twofy Browser Support */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72CF545B2C3CDE990071DA59 /* Build configuration list for PBXNativeTarget "Twofy Browser Support" */;
+			buildPhases = (
+				72CF544D2C3CDE980071DA59 /* Sources */,
+				72CF544E2C3CDE980071DA59 /* Frameworks */,
+				72CF544F2C3CDE980071DA59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Twofy Browser Support";
+			packageProductDependencies = (
+				72CF54622C3CDEDC0071DA59 /* BrowserSupportService */,
+				72CF54642C3CDFAB0071DA59 /* ExtensionMessageBus */,
+				72CF54832C3E1B200071DA59 /* XPCSupport */,
+				72CF54852C3E1C6E0071DA59 /* ServiceBrokerService */,
+			);
+			productName = BrowserSupport;
+			productReference = 72CF54512C3CDE980071DA59 /* Twofy Browser Support.app */;
+			productType = "com.apple.product-type.application";
+		};
+		72CF546C2C3E11DE0071DA59 /* Twofy Service Broker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72CF54772C3E11E00071DA59 /* Build configuration list for PBXNativeTarget "Twofy Service Broker" */;
+			buildPhases = (
+				72CF54692C3E11DE0071DA59 /* Sources */,
+				72CF546A2C3E11DE0071DA59 /* Frameworks */,
+				72CF546B2C3E11DE0071DA59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Twofy Service Broker";
+			packageProductDependencies = (
+				72CF547F2C3E16CC0071DA59 /* Utilities */,
+				72CF54812C3E16CF0071DA59 /* ServiceBrokerService */,
+			);
+			productName = ServiceBroker;
+			productReference = 72CF546D2C3E11DE0071DA59 /* Twofy Service Broker.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -224,6 +407,12 @@
 						CreatedOnToolsVersion = 15.3;
 					};
 					72BCF7BD2C3629930087BD73 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					72CF54502C3CDE980071DA59 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					72CF546C2C3E11DE0071DA59 = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
@@ -243,6 +432,8 @@
 			targets = (
 				7280CC3D2C286C94001E83DD /* Twofy */,
 				72BCF7BD2C3629930087BD73 /* ManifestInstaller */,
+				72CF54502C3CDE980071DA59 /* Twofy Browser Support */,
+				72CF546C2C3E11DE0071DA59 /* Twofy Service Broker */,
 			);
 		};
 /* End PBXProject section */
@@ -265,6 +456,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72CF544F2C3CDE980071DA59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CF54562C3CDE990071DA59 /* Assets.xcassets in Resources */,
+				72CF54592C3CDE990071DA59 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CF546B2C3E11DE0071DA59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CF54722C3E11E00071DA59 /* Assets.xcassets in Resources */,
+				72CF54752C3E11E00071DA59 /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -275,6 +484,7 @@
 				7280CC442C286C94001E83DD /* ContentView.swift in Sources */,
 				728BD2DB2C3A1C4600AC7BBD /* InstructionsView.swift in Sources */,
 				7280CC552C2872A5001E83DD /* ViewModel.swift in Sources */,
+				72CF547E2C3E15230071DA59 /* TwofyAppDelegate.swift in Sources */,
 				7280CC422C286C94001E83DD /* TwofyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,15 +497,65 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		72CF544D2C3CDE980071DA59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CF54542C3CDE980071DA59 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72CF54692C3E11DE0071DA59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72CF54702C3E11DF0071DA59 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		728BD3042C3CD39900AC7BBD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72CF54502C3CDE980071DA59 /* Twofy Browser Support */;
+			targetProxy = 728BD3032C3CD39900AC7BBD /* PBXContainerItemProxy */;
+		};
 		72BCF7C92C3629930087BD73 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 72BCF7BD2C3629930087BD73 /* ManifestInstaller */;
 			targetProxy = 72BCF7C82C3629930087BD73 /* PBXContainerItemProxy */;
 		};
+		72CF54392C3CD3A80071DA59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72CF54502C3CDE980071DA59 /* Twofy Browser Support */;
+			targetProxy = 72CF54382C3CD3A80071DA59 /* PBXContainerItemProxy */;
+		};
+		72CF54602C3CDEAB0071DA59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72CF54502C3CDE980071DA59 /* Twofy Browser Support */;
+			targetProxy = 72CF545F2C3CDEAB0071DA59 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		72CF54572C3CDE990071DA59 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72CF54582C3CDE990071DA59 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		72CF54732C3E11E00071DA59 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72CF54742C3E11E00071DA59 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7280CC4B2C286C95001E83DD /* Debug */ = {
@@ -422,17 +682,19 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Twofy/Resources/Twofy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Apps/Twofy/Resources/Twofy.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Twofy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Apps/Twofy/Preview Content\"";
 				DEVELOPMENT_TEAM = YN24FFRTC8;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Twofy/Resources/Info.plist;
+				INFOPLIST_FILE = Apps/Twofy/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -453,17 +715,19 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Twofy/Resources/Twofy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Apps/Twofy/Resources/Twofy.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Twofy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Apps/Twofy/Preview Content\"";
 				DEVELOPMENT_TEAM = YN24FFRTC8;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Twofy/Resources/Info.plist;
+				INFOPLIST_FILE = Apps/Twofy/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -481,14 +745,14 @@
 		72BCF7CC2C3629930087BD73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = ManifestInstaller/ManifestInstaller.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Services/ManifestInstaller/ManifestInstaller.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YN24FFRTC8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ManifestInstaller/Info.plist;
+				INFOPLIST_FILE = Services/ManifestInstaller/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ManifestInstaller;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
@@ -504,19 +768,145 @@
 		72BCF7CD2C3629930087BD73 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = ManifestInstaller/ManifestInstaller.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Services/ManifestInstaller/ManifestInstaller.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YN24FFRTC8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ManifestInstaller/Info.plist;
+				INFOPLIST_FILE = Services/ManifestInstaller/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ManifestInstaller;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.foureyes.Twofy.ManifestInstaller;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		72CF545C2C3CDE990071DA59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Apps/BrowserSupport/BrowserSupport.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YN24FFRTC8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.foureyes.Twofy.BrowserSupport;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		72CF545D2C3CDE990071DA59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Apps/BrowserSupport/BrowserSupport.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YN24FFRTC8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.foureyes.Twofy.BrowserSupport;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		72CF54782C3E11E00071DA59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Apps/ServiceBroker/ServiceBroker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YN24FFRTC8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = YN24FFRTC8.me.foureyes.Twofy.ServiceBroker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		72CF54792C3E11E00071DA59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Apps/ServiceBroker/ServiceBroker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YN24FFRTC8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = YN24FFRTC8.me.foureyes.Twofy.ServiceBroker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -554,6 +944,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		72CF545B2C3CDE990071DA59 /* Build configuration list for PBXNativeTarget "Twofy Browser Support" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72CF545C2C3CDE990071DA59 /* Debug */,
+				72CF545D2C3CDE990071DA59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		72CF54772C3E11E00071DA59 /* Build configuration list for PBXNativeTarget "Twofy Service Broker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72CF54782C3E11E00071DA59 /* Debug */,
+				72CF54792C3E11E00071DA59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -564,6 +972,30 @@
 		728BD2D62C3A197600AC7BBD /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
+		};
+		72CF54622C3CDEDC0071DA59 /* BrowserSupportService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BrowserSupportService;
+		};
+		72CF54642C3CDFAB0071DA59 /* ExtensionMessageBus */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ExtensionMessageBus;
+		};
+		72CF547F2C3E16CC0071DA59 /* Utilities */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utilities;
+		};
+		72CF54812C3E16CF0071DA59 /* ServiceBrokerService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ServiceBrokerService;
+		};
+		72CF54832C3E1B200071DA59 /* XPCSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XPCSupport;
+		};
+		72CF54852C3E1C6E0071DA59 /* ServiceBrokerService */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ServiceBrokerService;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

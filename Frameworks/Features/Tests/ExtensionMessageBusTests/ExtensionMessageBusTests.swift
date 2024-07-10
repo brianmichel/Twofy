@@ -12,7 +12,7 @@ final class ExtensionMessageBusTests: XCTestCase {
         let actions: [ExtensionMessage] = [.code("22993"), .pollingTimeout, .unknown("Oops")]
 
         for action in actions {
-            let inputJSONObject = action.actionJSON
+            let inputJSONObject = action.json
             let inputJSONData = try JSONSerialization.data(withJSONObject: inputJSONObject)
 
             sut.send(inputJSONObject)
@@ -32,7 +32,7 @@ final class ExtensionMessageBusTests: XCTestCase {
         let output = pipe.fileHandleForWriting
         let input = pipe.fileHandleForReading
 
-        let inputJSONObject = ExtensionMessage.pollingTimeout.actionJSON
+        let inputJSONObject = ExtensionMessage.pollingTimeout.json
 
         let sut = ExtensionMessageBus(input: input, output: output)
         sut.send(inputJSONObject)
@@ -50,7 +50,7 @@ final class ExtensionMessageBusTests: XCTestCase {
         let output = pipe.fileHandleForWriting
         let input = pipe.fileHandleForReading
 
-        let inputJSONObject = ExtensionMessage.code("2233").actionJSON
+        let inputJSONObject = ExtensionMessage.code("2233").json
 
         let sut = ExtensionMessageBus(input: input, output: output)
         try sut.start()

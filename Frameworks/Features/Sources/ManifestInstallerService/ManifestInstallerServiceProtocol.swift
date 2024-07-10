@@ -10,5 +10,5 @@ public enum ManifestInstallationError: Int, Error {
 
 @objc public protocol ManifestInstallerServiceProtocol {
     func install(for applicationID: String, with reply: @escaping ((Error?) -> Void))
-    func install(for applicationID: String) async throws -> (any Error)?
+    func install(for applicationID: String) async throws -> Error?
 }

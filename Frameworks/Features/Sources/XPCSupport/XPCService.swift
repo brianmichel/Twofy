@@ -30,9 +30,9 @@ public class XPCService<T> {
 
         connection.resume()
 
-        guard
-            let xpcService = connection.remoteObjectProxyWithErrorHandler(errorHandler) as? T
-        else {
+        let remoteObjectProxy = connection.remoteObjectProxyWithErrorHandler(errorHandler)
+
+        guard let xpcService = remoteObjectProxy as? T else {
             errorHandler(XPCError.connectionFailure("Unable to set up XPC connection to \(connection)"))
             return
         }

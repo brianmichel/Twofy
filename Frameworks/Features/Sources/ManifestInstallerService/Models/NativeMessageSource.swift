@@ -31,3 +31,9 @@ extension NativeMessageSource {
         }
     }
 }
+
+extension NativeMessageSource: CustomStringConvertible {
+    public var description: String {
+        rawValue
+    }
+}
