@@ -9,7 +9,7 @@ public enum MessageEncryptorError: Error {
 
 public struct MessageEncryptor {
     public enum Keys {
-        public static let service = "me.foureyes.message-encryption"
+        public static let service = "me.foureyes.Twofy.message-encryption"
         public static let group = "YN24FFRTC8.me.foureyes.Twofy"
         public static let identifier = "message-encryption-key"
     }
@@ -28,14 +28,16 @@ public struct MessageEncryptor {
         let sodium = Sodium()
         let secretKey = sodium.secretBox.key()
 
-        let keychain = Keychain(service: Keys.service, accessGroup: Keys.group)
+        var keychain = Keychain(service: Keys.service, accessGroup: Keys.group)
+        keychain = keychain.synchronizable(true)
         keychain[data: Keys.identifier] = Data(secretKey)
 
         return secretKey
     }
 
     private static func getEncryptionKey() -> Data? {
-        let keychain = Keychain(service: Keys.service, accessGroup: Keys.group)
+        var keychain = Keychain(service: Keys.service, accessGroup: Keys.group)
+        keychain = keychain.synchronizable(true)
         return keychain[data: Keys.identifier]
     }
 
