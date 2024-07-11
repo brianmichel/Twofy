@@ -1,4 +1,7 @@
 import Foundation
+import MessageEncryption
+
+public let encryptor = MessageEncryptor()
 
 extension Notification.Name {
     public static let browserSupport = Notification.Name("me.foureyes.Twofy.BrowserSupportIPCNotification")
@@ -14,15 +17,21 @@ public struct BrowserSupportIPCNotificationMessage: Identifiable, Codable {
     public var action: Action
 }
 
+private struct BrowserSupportIPCWrapper: Codable {
+    let message: Data
+}
+
 extension BrowserSupportIPCNotificationMessage {
     public static func send(_ action: Action) {
         let message = BrowserSupportIPCNotificationMessage(action: action)
         let data = try! PropertyListEncoder().encode(message)
 
+        let encrypted = try! encryptor.encrypt(data)
+
         DistributedNotificationCenter
             .default()
             .postNotificationName(.browserSupport,
-                                  object: data.base64EncodedString(),
+                                  object: encrypted.base64EncodedString(),
                                   deliverImmediately: true)
     }
 
@@ -31,8 +40,8 @@ extension BrowserSupportIPCNotificationMessage {
             .default()
             .addObserver(forName: .browserSupport, object: nil, queue: .main) { notification in
                 guard let base64 = notification.object as? String else { return }
-                guard let data = Data(base64Encoded: base64) else { return }
-                let decoded = try! PropertyListDecoder().decode(BrowserSupportIPCNotificationMessage.self, from: data)
+                let decrypted = try! encryptor.decrypt(Data(base64Encoded: base64)!)
+                let decoded = try! PropertyListDecoder().decode(BrowserSupportIPCNotificationMessage.self, from: decrypted)
                 block(decoded)
             }
     }

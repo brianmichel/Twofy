@@ -29,16 +29,20 @@ let package = Package(
         .library(name: "BrowserSupportService", targets: ["BrowserSupportService"]),
         .library(name: "ServiceBrokerService", targets: ["ServiceBrokerService"]),
         .library(name: "XPCSupport", targets: ["XPCSupport"]),
-        .library(name: "DistributedNotificationIPC", targets: ["DistributedNotificationIPC"])
+        .library(name: "DistributedNotificationIPC", targets: ["DistributedNotificationIPC"]),
+        .library(name: "MessageEncryption", targets: ["MessageEncryption"])
     ],
     dependencies: [
         .package(url: "https://github.com/groue/GRDB.swift.git", from: "6.27.0"),
+        .package(url: "https://github.com/jedisct1/swift-sodium.git", from: "0.9.1"),
+        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.2.2")
     ],
     targets: [
         .target(
             name: "AppFeature",
             dependencies: [
-                "MessageDatabaseListener"
+                "MessageDatabaseListener",
+                "MessageEncryption"
             ]),
         .testTarget(
             name: "AppFeatureTests",
@@ -71,6 +75,17 @@ let package = Package(
         ),
         .target(name: "ServiceBrokerService"),
         .target(name: "XPCSupport"),
-        .target(name: "DistributedNotificationIPC")
+        .target(
+            name: "DistributedNotificationIPC",
+            dependencies: [
+                "MessageEncryption"
+            ]),
+        .target(
+            name: "MessageEncryption",
+            dependencies: [
+                .product(name: "KeychainAccess", package: "keychainaccess"),
+                .product(name: "Sodium", package: "swift-sodium"),
+            ]
+        )
     ]
 )
