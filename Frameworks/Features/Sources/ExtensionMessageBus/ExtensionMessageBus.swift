@@ -15,48 +15,21 @@ public final class ExtensionMessageBus {
     }
 
     public func start() throws {
-        logger.info("Starting to listen for data")
+        logger.debug("Starting to listen for data...")
         stop()
 
         input.readabilityHandler = { [weak self] handle in
             guard let self else { return }
-            logger.info("Data available!!!")
+            logger.debug("Data available from readabilityHandler, attempting to process")
 
-            guard let input = try! receive() else {
+            guard let _ = try! receive() else {
                 return
             }
-
-            // Process the input
-            logger.info("Received message: \(input)")
-
-            // You can process the input here and send a response if needed
-            let response = ["response": "Message received"]
-            send(response)
         }
-
-//        task = Task {
-//            for await _ in NotificationCenter.default.notifications(named: .NSFileHandleDataAvailable, object: nil) {
-//                defer { input.waitForDataInBackgroundAndNotify() }
-//
-//                guard let input = try receive() else {
-//                    continue
-//                }
-//
-//                // Process the input
-//                logger.info("Received message: \(input)")
-//
-//                // You can process the input here and send a response if needed
-//                let response = ["response": "Message received"]
-//                send(response)
-//            }
-//        }
-
-        input.waitForDataInBackgroundAndNotify()
     }
 
     public func stop() {
-        task?.cancel()
-        task = nil
+        input.readabilityHandler = nil
     }
 
     public func send(_ message: ExtensionMessage) {
@@ -65,10 +38,12 @@ public final class ExtensionMessageBus {
 
     internal func receive() throws -> [String: Any]? {
         guard let lengthData = try input.read(upToCount: .messageHeaderLength) else {
+            logger.debug("Exiting early, can't find data the length of the header...")
             return nil
         }
 
         guard  let messageLength = lengthData.toUInt32(), let messageData = try input.read(upToCount: Int(messageLength)) else {
+            logger.debug("Exiting early, can't convert data length and read the correct sized data...")
             return nil
         }
 

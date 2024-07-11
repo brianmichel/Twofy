@@ -18,7 +18,8 @@ let package = Package(
                 "Utilities",
                 "ManifestInstallerService",
                 "BrowserSupportService",
-                "ServiceBrokerService"
+                "ServiceBrokerService",
+                "DistributedNotificationIPC"
             ]
         ),
         .library(name: "ExtensionMessageBus", targets: ["ExtensionMessageBus"]),
@@ -27,7 +28,8 @@ let package = Package(
         .library(name: "ManifestInstallerService", targets: ["ManifestInstallerService"]),
         .library(name: "BrowserSupportService", targets: ["BrowserSupportService"]),
         .library(name: "ServiceBrokerService", targets: ["ServiceBrokerService"]),
-        .library(name: "XPCSupport", targets: ["XPCSupport"])
+        .library(name: "XPCSupport", targets: ["XPCSupport"]),
+        .library(name: "DistributedNotificationIPC", targets: ["DistributedNotificationIPC"])
     ],
     dependencies: [
         .package(url: "https://github.com/groue/GRDB.swift.git", from: "6.27.0"),
@@ -68,6 +70,7 @@ let package = Package(
             ]
         ),
         .target(name: "ServiceBrokerService"),
-        .target(name: "XPCSupport")
+        .target(name: "XPCSupport"),
+        .target(name: "DistributedNotificationIPC")
     ]
 )

@@ -1,5 +1,5 @@
 import AppFeature
-import BrowserSupportService
+import DistributedNotificationIPC
 import Foundation
 import ManifestInstallerService
 import MessageDatabaseListener
@@ -35,13 +35,6 @@ final class ViewModel: ObservableObject {
         interface: NSXPCInterface(with: ManifestInstallerServiceProtocol.self)
     )
 
-    private let serviceBroker = XPCService<ServiceBrokerServiceProtocol>(
-        connection: NSXPCConnection(machServiceName: .serviceBroker),
-        interface: NSXPCInterface(with: ServiceBrokerServiceProtocol.self)
-    )
-
-    private var browserSupport: XPCService<BrowserSupportServiceProtocol>?
-
     @Published var findingCodes: Bool = false {
         didSet {
             if findingCodes {
@@ -52,7 +45,6 @@ final class ViewModel: ObservableObject {
         }
     }
     private var findMessagesTask: Task<Void, (any Error)>?
-    let loginItem = SMAppService.loginItem(identifier: "YN24FFRTC8.me.foureyes.Twofy.ServiceBroker")
 
     func setupListener(for path: URL) {
         do {
@@ -66,23 +58,6 @@ final class ViewModel: ObservableObject {
                 }
             })
 
-            serviceBroker.setup { error in
-                logger.error("Error from service broker: \(error.localizedDescription)")
-            }
-            serviceBroker.service?.registerMainApplication(with: { [weak self] browserSupportEndpoint in
-                guard let self else { return }
-                DispatchQueue.main.async {
-                    logger.debug("Received BrowserSupport process endpoint: \(browserSupportEndpoint)")
-                    self.browserSupport = .init(
-                        connection: NSXPCConnection(listenerEndpoint: browserSupportEndpoint),
-                        interface: NSXPCInterface(with: BrowserSupportServiceProtocol.self))
-
-                    self.browserSupport?.setup(errorHandler: { error in
-                        logger.error("Error from browserSupport Process: \(error.localizedDescription)")
-                    })
-                }
-            })
-
             error = nil
         } catch let error {
             self.error = error
@@ -90,9 +65,7 @@ final class ViewModel: ObservableObject {
     }
 
     func send(code: String) {
-        Task {
-            try! await browserSupport?.service?.send(code: code)
-        }
+        BrowserSupportIPCNotificationMessage.send(.foundCode(code))
     }
 
     private func startFindingCodes() {
@@ -107,7 +80,7 @@ final class ViewModel: ObservableObject {
             }
         }
 
-        listener.start(lookback: .minutes(10))
+        listener.start(lookback: .days(2))
     }
 
     private func stopFindingCodes() {

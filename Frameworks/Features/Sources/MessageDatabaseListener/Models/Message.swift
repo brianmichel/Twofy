@@ -48,7 +48,7 @@ extension String {
             let regex = try NSRegularExpression(pattern: pattern, options: [])
 
             // Find matches in the text
-            let matches = regex.matches(in: self, options: [], range: NSRange(location: 0, length: self.utf8.count))
+            let matches = regex.matches(in: self, options: [], range: NSRange(location: 0, length: self.count))
 
             // Extract the matching codes from the text
             let codes = matches.map { match -> String in
