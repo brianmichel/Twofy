@@ -14,5 +14,11 @@
       "js": ["content.js"],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "icons": {
+    "16": "BrowserExtension16.png",
+    "32": "BrowserExtension32.png",
+    "48": "BrowserExtension48.png",
+    "128": "BrowserExtension128.png"
+  }
 }

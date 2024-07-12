@@ -52,13 +52,16 @@ class TwoFactorAutofillCodeBanner {
       </div>
     </div>
     `;
-    this._insertAutofillElement(this.inputs);
-    this.present();
 
-    // Schedule the destruction of this banner in 10 seconds
-    // after it is first presented.
-    // TODO: How could/should this be adjustable?
-    setTimeout(this.destroy.bind(this), 10_000);
+    if (this.inputs && this.inputs.length > 0) {
+      this._insertAutofillElement(this.inputs);
+      this.present();
+
+      // Schedule the destruction of this banner in 10 seconds
+      // after it is first presented.
+      // TODO: How could/should this be adjustable?
+      setTimeout(this.destroy.bind(this), 10_000);
+    }
   }
 
   present() {
