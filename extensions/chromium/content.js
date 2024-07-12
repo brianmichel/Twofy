@@ -13,8 +13,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   }
 });
 
+let autofillElement = null;
 function showAutofill(code) {
-  let autofillElement = new TwoFactorAutofillCodeBanner(code);
+  if (autofillElement !== null) {
+    autofillElement.destroy();
+    autofillElement = null;
+  }
+  autofillElement = new TwoFactorAutofillCodeBanner(code);
 }
 
 // The main class in which 2FA autofill information will get presented.

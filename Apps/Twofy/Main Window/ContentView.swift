@@ -111,6 +111,7 @@ struct ContentView: View {
         .onTapGesture {
             viewModel.send(code: message.extractedCode()!)
         }
+        .onHover(cursor: .pointingHand)
     }
 
     private func formattedDate(_ date: Date) -> String {
@@ -123,5 +124,9 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(viewModel: .stub())
+    return ContentView(viewModel: {
+        let model: ViewModel = .stub()
+        model.databaseFolder = URL(fileURLWithPath: "/dev/null")
+        return model
+    }())
 }
