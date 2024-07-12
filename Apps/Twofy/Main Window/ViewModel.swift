@@ -15,7 +15,12 @@ private let logger = Logger.for(category: "ViewModel")
 final class ViewModel: ObservableObject {
     @Published var messages = [Message]() {
         didSet {
-            guard let first = messages.first, let code = first.extractedCode() else { return }
+            guard
+                let first = messages.first,
+                    !sentMessageIDs.contains(first.id),
+                    let code = first.extractedCode()
+            else { return }
+            sentMessageIDs.insert(first.id)
             send(code: code)
         }
     }
@@ -27,7 +32,8 @@ final class ViewModel: ObservableObject {
     }
 
     @Published var error: (any Error)? = nil
-
+    
+    private var sentMessageIDs = Set<Int64>()
     private(set) var listener: MessageDatabaseListener?
 
     private let manifestInstaller = XPCService<ManifestInstallerServiceProtocol>(

@@ -80,6 +80,7 @@ public final class MessageDatabaseListener {
                     left join handle on message.handle_id = handle.ROWID
             where
                 message.is_from_me = 0
+                and message.service is not 'iMessage'
                 and message.text is not null
                 and length(message.text) > 0
                 and (
