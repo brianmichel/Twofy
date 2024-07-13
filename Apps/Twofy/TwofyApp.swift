@@ -6,7 +6,7 @@ struct TwofyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: appDelegate.viewModel)
+            RootView(appModel: appDelegate.appModel)
                 .frame(minWidth: 500, maxWidth: 500, minHeight: 400, maxHeight: 400)
             #if DEBUG
                 .navigationTitle("Twofy (Debug)")
@@ -14,5 +14,10 @@ struct TwofyApp: App {
         }
         .windowToolbarStyle(.unified(showsTitle: true))
         .windowResizability(.contentSize)
+
+        Settings {
+            SettingsView()
+                .environmentObject(appDelegate.appModel.settings)
+        }
     }
 }

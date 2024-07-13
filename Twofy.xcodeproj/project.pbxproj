@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7280CC422C286C94001E83DD /* TwofyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280CC412C286C94001E83DD /* TwofyApp.swift */; };
-		7280CC442C286C94001E83DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280CC432C286C94001E83DD /* ContentView.swift */; };
+		7280CC442C286C94001E83DD /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280CC432C286C94001E83DD /* RootView.swift */; };
 		7280CC462C286C95001E83DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7280CC452C286C95001E83DD /* Assets.xcassets */; };
 		7280CC492C286C95001E83DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7280CC482C286C95001E83DD /* Preview Assets.xcassets */; };
-		7280CC552C2872A5001E83DD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280CC542C2872A5001E83DD /* ViewModel.swift */; };
+		7280CC552C2872A5001E83DD /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280CC542C2872A5001E83DD /* AppModel.swift */; };
 		728BD2D22C3A195400AC7BBD /* Features in Resources */ = {isa = PBXBuildFile; fileRef = 728BD2D02C3A195400AC7BBD /* Features */; };
 		728BD2D42C3A196E00AC7BBD /* ManifestInstallerService in Frameworks */ = {isa = PBXBuildFile; productRef = 728BD2D32C3A196E00AC7BBD /* ManifestInstallerService */; };
 		728BD2D72C3A197600AC7BBD /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 728BD2D62C3A197600AC7BBD /* AppFeature */; };
@@ -28,6 +28,10 @@
 		72CF54842C3E1B200071DA59 /* XPCSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54832C3E1B200071DA59 /* XPCSupport */; };
 		72CF54862C3E1C6E0071DA59 /* ServiceBrokerService in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54852C3E1C6E0071DA59 /* ServiceBrokerService */; };
 		72CF54892C3F7AC60071DA59 /* DistributedNotificationIPC in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54882C3F7AC60071DA59 /* DistributedNotificationIPC */; };
+		72CF548D2C4209DF0071DA59 /* CodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF548C2C4209DF0071DA59 /* CodesViewModel.swift */; };
+		72CF548F2C420A2C0071DA59 /* CodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF548E2C420A2C0071DA59 /* CodesView.swift */; };
+		72CF54922C420F9D0071DA59 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF54912C420F9D0071DA59 /* SettingsModel.swift */; };
+		72CF54942C4211520071DA59 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF54932C4211520071DA59 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,11 +93,11 @@
 /* Begin PBXFileReference section */
 		7280CC3E2C286C94001E83DD /* Twofy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twofy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7280CC412C286C94001E83DD /* TwofyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwofyApp.swift; sourceTree = "<group>"; };
-		7280CC432C286C94001E83DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7280CC432C286C94001E83DD /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		7280CC452C286C95001E83DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7280CC482C286C95001E83DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7280CC4A2C286C95001E83DD /* Twofy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Twofy.entitlements; sourceTree = "<group>"; };
-		7280CC542C2872A5001E83DD /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		7280CC542C2872A5001E83DD /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		728BD2D02C3A195400AC7BBD /* Features */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Features; sourceTree = "<group>"; };
 		728BD2D52C3A197200AC7BBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		728BD2DA2C3A1C4600AC7BBD /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
@@ -108,6 +112,10 @@
 		72CF545A2C3CDE990071DA59 /* BrowserSupport.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BrowserSupport.entitlements; sourceTree = "<group>"; };
 		72CF54682C3E0A970071DA59 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		72CF547D2C3E15230071DA59 /* TwofyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwofyAppDelegate.swift; sourceTree = "<group>"; };
+		72CF548C2C4209DF0071DA59 /* CodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesViewModel.swift; sourceTree = "<group>"; };
+		72CF548E2C420A2C0071DA59 /* CodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesView.swift; sourceTree = "<group>"; };
+		72CF54912C420F9D0071DA59 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		72CF54932C4211520071DA59 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +174,8 @@
 		7280CC402C286C94001E83DD /* Twofy */ = {
 			isa = PBXGroup;
 			children = (
+				72CF548A2C4209C40071DA59 /* Views */,
 				728BD2D92C3A1A8000AC7BBD /* Resources */,
-				728BD2D82C3A1A7200AC7BBD /* Main Window */,
 				7280CC412C286C94001E83DD /* TwofyApp.swift */,
 				7280CC472C286C95001E83DD /* Preview Content */,
 				72CF54682C3E0A970071DA59 /* README.md */,
@@ -199,14 +207,14 @@
 			path = Frameworks;
 			sourceTree = "<group>";
 		};
-		728BD2D82C3A1A7200AC7BBD /* Main Window */ = {
+		728BD2D82C3A1A7200AC7BBD /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				7280CC432C286C94001E83DD /* ContentView.swift */,
-				7280CC542C2872A5001E83DD /* ViewModel.swift */,
+				7280CC432C286C94001E83DD /* RootView.swift */,
+				7280CC542C2872A5001E83DD /* AppModel.swift */,
 				728BD2DA2C3A1C4600AC7BBD /* InstructionsView.swift */,
 			);
-			path = "Main Window";
+			path = Root;
 			sourceTree = "<group>";
 		};
 		728BD2D92C3A1A8000AC7BBD /* Resources */ = {
@@ -255,6 +263,34 @@
 				72BCF7BF2C3629930087BD73 /* ManifestInstaller */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		72CF548A2C4209C40071DA59 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				72CF54902C420F8F0071DA59 /* Settings */,
+				72CF548B2C4209D30071DA59 /* Codes */,
+				728BD2D82C3A1A7200AC7BBD /* Root */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		72CF548B2C4209D30071DA59 /* Codes */ = {
+			isa = PBXGroup;
+			children = (
+				72CF548C2C4209DF0071DA59 /* CodesViewModel.swift */,
+				72CF548E2C420A2C0071DA59 /* CodesView.swift */,
+			);
+			path = Codes;
+			sourceTree = "<group>";
+		};
+		72CF54902C420F8F0071DA59 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				72CF54912C420F9D0071DA59 /* SettingsModel.swift */,
+				72CF54932C4211520071DA59 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,11 +441,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7280CC442C286C94001E83DD /* ContentView.swift in Sources */,
+				7280CC442C286C94001E83DD /* RootView.swift in Sources */,
 				728BD2DB2C3A1C4600AC7BBD /* InstructionsView.swift in Sources */,
-				7280CC552C2872A5001E83DD /* ViewModel.swift in Sources */,
+				72CF54922C420F9D0071DA59 /* SettingsModel.swift in Sources */,
+				72CF54942C4211520071DA59 /* SettingsView.swift in Sources */,
+				7280CC552C2872A5001E83DD /* AppModel.swift in Sources */,
 				72CF547E2C3E15230071DA59 /* TwofyAppDelegate.swift in Sources */,
 				7280CC422C286C94001E83DD /* TwofyApp.swift in Sources */,
+				72CF548D2C4209DF0071DA59 /* CodesViewModel.swift in Sources */,
+				72CF548F2C420A2C0071DA59 /* CodesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

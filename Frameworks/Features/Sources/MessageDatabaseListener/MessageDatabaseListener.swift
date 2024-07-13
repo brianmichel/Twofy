@@ -42,10 +42,10 @@ public final class MessageDatabaseListener {
         queue = try DatabaseQueue(path: path.path, configuration: config)
     }
 
-    public func start(lookback: LookbackDuration = .minutes(15)) {
+    public func start(lookback: LookbackDuration = .minutes(15), pollingInterval: TimeInterval) {
         stop()
         pollingTask = Task {
-            let poller = Poller(interval: 5)
+            let poller = Poller(interval: pollingInterval)
             await poller.start { [weak self] in
                 guard let self else { return }
                 do {

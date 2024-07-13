@@ -1,14 +1,17 @@
 import Foundation
 import Utilities
 
-public enum NativeMessageSource: String, Sendable {
-    case chrome
+public enum NativeMessageSource: String, Sendable, CaseIterable {
     case arc
+    case brave
+    case chrome
     case edge
+    case opera
+    case operaGX
 }
 
 extension NativeMessageSource {
-    var installationDirectory: URL {
+    public var installationDirectory: URL {
         let basePath: URL = .realHomeDirectory
             .appending(path: "Library", directoryHint: .isDirectory)
             .appending(path: "Application Support", directoryHint: .isDirectory)
@@ -28,6 +31,38 @@ extension NativeMessageSource {
             return basePath
                 .appending(path: "Microsoft Edge", directoryHint: .isDirectory)
                 .appending(path: "NativeMessagingHosts", directoryHint: .isDirectory)
+        case .brave:
+            return basePath
+                .appending(path: "Google", directoryHint: .isDirectory)
+                .appending(path: "Chrome", directoryHint: .isDirectory)
+                .appending(path: "NativeMessagingHosts", directoryHint: .isDirectory)
+        case .opera:
+            return basePath
+                .appending(path: "Google", directoryHint: .isDirectory)
+                .appending(path: "Chrome", directoryHint: .isDirectory)
+                .appending(path: "NativeMessagingHosts", directoryHint: .isDirectory)
+        case .operaGX:
+            return basePath
+                .appending(path: "Google", directoryHint: .isDirectory)
+                .appending(path: "Chrome", directoryHint: .isDirectory)
+                .appending(path: "NativeMessagingHosts", directoryHint: .isDirectory)
+        }
+    }
+
+    public var name: String {
+        switch self {
+        case .arc:
+            return "Arc"
+        case .edge:
+            return "Edge"
+        case .chrome:
+            return "Chrome"
+        case .brave:
+            return "Brave"
+        case .opera:
+            return "Opera"
+        case .operaGX:
+            return "OperaGX"
         }
     }
 }
