@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body class="bg-amber-100 font-serif flex-grow max-w-2xl mx-auto w-full px-4 py-8">
+    <nav>
+      <header class="flex justify-between">
+        <a href="#about" class="w-11 h-11 flex-col rounded-full bg-purple-100 flex justify-center items-center">🔓</a>
+        <section class="flex-col text-purple-700">
+          <a href="#why" class="underline">Why?</a>
+          <a href="#features" class="underline">Features</a>
+          <a href="#source" class="underline">Source</a>
+        </section>
+      </header>
+    </nav>
+
+    <main>
+      <section id="about">
+        <h1 class="text-3xl py-3">The missing <span class="two-factor-code font-mono bg-purple-200 p-1 rounded-lg">2FA</span> helper application.</h1>
+        <p class="text-gray-700 mb-4">
+          Getting two factor codes from your Messages app into your browser is pain and there is no API to allow browser developers to easily get these codes. Twofy is an open sourced, sandboxed application that helps automate this process without any hassle.
+        </p>
+      </section>
+
+      <section id="why">
+        <h2 class="text-3xl py-3">Why?</h2>
+        <p class="text-gray-700 mb-4">
+          This idea isn't new, but it a continuation of the same ideas that have been used in Alfred, Raycast, and countless other helper applications in the open source world. I wanted something that would work in all of the browsers that I use. I also wanted the application to be sandboxed and easily verifiable that no networking was taking place to ensure my codes were being securely handled.
+        </p>
+
+        <p class="text-gray-700 mb-4">
+          It's important to me that something that can read your text messages is open source which allows anyone to inspect the code running on their machine and make an informed decision about that piece of software.
+        </p>
+      </section>
+
+      <section id="features">
+        <h2 class="text-3xl py-3">Features</h2>
+        <p class="text-gray-700 mb-4">
+          Twofy is simple, but feature rich to help make your workflows a bit more straightforward when needing just-in-time access to your two factor authentication codes that have been sent via text message.
+        </p>
+        <p class="text-gray-700 mb-4">
+          <ul class="list-disc list-inside">
+            <li class="pb-1">
+              Sandboxed & Notarized for safety
+            </li>
+            <div class="bg-purple-50 rounded-lg p-2 text-xs border-purple-100 border-2 mx-4">
+              <span>You must give explicitly grant access to your message data in order for Twofy to do anything. It can't do anything automatically with your data.</span>
+            </div>
+            <li class="pb-1 mt-2">
+              Encrypted interprocess communication
+            </li>
+            <div class="bg-purple-50 rounded-lg p-2 text-xs border-purple-100 border-2 mx-4">
+              <span>Twofy uses two processes to relay codes from your Messages into your chosen browser. The communication between these two processes is encrypted with a key stored in your Keychain.</span>
+            </div>
+          </ul>
+        </p>
+      </section>
+
+      <section id="source">
+        <h2 class="text-3xl py-3">Source</h2>
+        <p class="text-gray-700 mb-4">
+          You can find releases and source code publicly available on GitHub.
+        </p>
+        <a href="https://github.com/brianmichel/twofy" target="_blank" class="bg-purple-200 p-2 rounded-lg border-purple-600 border-2 hover:bg-purple-100">
+          View source code on GitHub →
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
