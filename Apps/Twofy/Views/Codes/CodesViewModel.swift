@@ -1,9 +1,12 @@
+import AppFeature
+import Dependencies
 import DistributedNotificationIPC
 import Foundation
 import MessageDatabaseListener
 
-
 final class CodesViewModel: ObservableObject {
+    @Dependency(\.settings) var settings
+
     @Published var findingCodes: Bool = false {
         didSet {
             if findingCodes {
@@ -40,7 +43,7 @@ final class CodesViewModel: ObservableObject {
             }
         }
 
-        listener.start(lookback: .days(2), pollingInterval: 30)
+        listener.start(lookback: .minutes(Int(settings.lookbackWindow)), pollingInterval: settings.pollingInterval)
     }
 
     private func stopPolling() {

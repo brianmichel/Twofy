@@ -1,13 +1,14 @@
+import Dependencies
 import ManifestInstallerService
 import SwiftUI
 
 struct GeneralView: View {
-    @EnvironmentObject var settings: SettingsModel
+    @Dependency(\.settings) var settings: SettingsModel
 
-    var body: some View {
+    public var body: some View {
         Form {
             Section {
-                Toggle(isOn: $settings.startOnLogin, label: {
+                Toggle(isOn: settings.$startOnLogin, label: {
                     Text("Start at login")
                 })
                 HStack {
@@ -21,7 +22,7 @@ struct GeneralView: View {
             .disabled(true)
             Section("Messages") {
                 VStack(alignment: .leading) {
-                    Slider(value: $settings.pollingInterval, in: 10...30, step: 5, label: {
+                    Slider(value: settings.$pollingInterval, in: 10...30, step: 5, label: {
                         VStack(alignment: .leading) {
                             Text("Check Frequency").font(.headline)
                             Text("\(settings.pollingInterval.formatted()) seconds")
@@ -43,7 +44,7 @@ struct GeneralView: View {
                     .foregroundStyle(.secondary)
                 }
                 VStack(alignment: .leading) {
-                    Slider(value: $settings.lookbackWindow, in: 1...5, step: 1, label: {
+                    Slider(value: settings.$lookbackWindow, in: 1...5, step: 1, label: {
                         VStack(alignment: .leading) {
                             Text("Lookback Window").font(.headline)
                             Text("\(settings.lookbackWindow.formatted()) minutes")
@@ -72,7 +73,7 @@ struct GeneralView: View {
 }
 
 struct BrowsersView: View {
-    @EnvironmentObject var settings: SettingsModel
+    @Dependency(\.settings) var settings: SettingsModel
 
     var body: some View {
         Form {
@@ -117,12 +118,14 @@ struct BrowsersView: View {
     }
 }
 
-struct SettingsView: View {
+public struct SettingsView: View {
     private enum Tabs: Hashable {
         case general, browsers
     }
 
-    var body: some View {
+    public init() {}
+
+    public var body: some View {
         TabView {
             GeneralView()
                 .tabItem {
@@ -135,22 +138,18 @@ struct SettingsView: View {
                 }
                 .tag(Tabs.browsers)
         }
-        .environmentObject(SettingsModel())
         .frame(width: 375)
     }
 }
 
 #Preview("Main") {
     SettingsView()
-        .environmentObject(SettingsModel())
 }
 
 #Preview("Browsers") {
     BrowsersView()
-        .environmentObject(SettingsModel())
 }
 
 #Preview("General") {
     GeneralView()
-        .environmentObject(SettingsModel())
 }

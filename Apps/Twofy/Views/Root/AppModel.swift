@@ -1,4 +1,5 @@
 import AppFeature
+import Dependencies
 import DistributedNotificationIPC
 import Foundation
 import ManifestInstallerService
@@ -14,7 +15,7 @@ import SwiftUI
 let logger = Logger.for(category: "App")
 
 final class AppModel: ObservableObject {
-    let settings = SettingsModel()
+    @Dependency(\.settings) var settings
 
     @Published private(set) var codesViewModel: CodesViewModel?
 

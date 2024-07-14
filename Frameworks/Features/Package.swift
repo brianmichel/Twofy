@@ -35,12 +35,14 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/groue/GRDB.swift.git", from: "6.27.0"),
         .package(url: "https://github.com/jedisct1/swift-sodium.git", from: "0.9.1"),
-        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.2.2")
+        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.2.2"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.0.0")
     ],
     targets: [
         .target(
             name: "AppFeature",
             dependencies: [
+                .product(name: "Dependencies", package: "swift-dependencies"),
                 "MessageDatabaseListener",
                 "MessageEncryption"
             ]),

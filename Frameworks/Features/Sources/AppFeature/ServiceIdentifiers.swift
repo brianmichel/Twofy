@@ -10,7 +10,4 @@ extension String {
     /// and pushing codes through as they get queried from the database polling
     /// mechanism in another process.
     static public let browserSupport = "me.foureyes.Twofy.BrowserSupport"
-
-    /// You seem to have to use the the team identifier in front to ensure you can connect.
-    static public let serviceBroker = "YN24FFRTC8.me.foureyes.Twofy.ServiceBroker"
 }

@@ -30,8 +30,6 @@
 		72CF54892C3F7AC60071DA59 /* DistributedNotificationIPC in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54882C3F7AC60071DA59 /* DistributedNotificationIPC */; };
 		72CF548D2C4209DF0071DA59 /* CodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF548C2C4209DF0071DA59 /* CodesViewModel.swift */; };
 		72CF548F2C420A2C0071DA59 /* CodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF548E2C420A2C0071DA59 /* CodesView.swift */; };
-		72CF54922C420F9D0071DA59 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF54912C420F9D0071DA59 /* SettingsModel.swift */; };
-		72CF54942C4211520071DA59 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF54932C4211520071DA59 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,8 +112,6 @@
 		72CF547D2C3E15230071DA59 /* TwofyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwofyAppDelegate.swift; sourceTree = "<group>"; };
 		72CF548C2C4209DF0071DA59 /* CodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesViewModel.swift; sourceTree = "<group>"; };
 		72CF548E2C420A2C0071DA59 /* CodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesView.swift; sourceTree = "<group>"; };
-		72CF54912C420F9D0071DA59 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
-		72CF54932C4211520071DA59 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,7 +264,6 @@
 		72CF548A2C4209C40071DA59 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				72CF54902C420F8F0071DA59 /* Settings */,
 				72CF548B2C4209D30071DA59 /* Codes */,
 				728BD2D82C3A1A7200AC7BBD /* Root */,
 			);
@@ -282,15 +277,6 @@
 				72CF548E2C420A2C0071DA59 /* CodesView.swift */,
 			);
 			path = Codes;
-			sourceTree = "<group>";
-		};
-		72CF54902C420F8F0071DA59 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				72CF54912C420F9D0071DA59 /* SettingsModel.swift */,
-				72CF54932C4211520071DA59 /* SettingsView.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,8 +429,6 @@
 			files = (
 				7280CC442C286C94001E83DD /* RootView.swift in Sources */,
 				728BD2DB2C3A1C4600AC7BBD /* InstructionsView.swift in Sources */,
-				72CF54922C420F9D0071DA59 /* SettingsModel.swift in Sources */,
-				72CF54942C4211520071DA59 /* SettingsView.swift in Sources */,
 				7280CC552C2872A5001E83DD /* AppModel.swift in Sources */,
 				72CF547E2C3E15230071DA59 /* TwofyAppDelegate.swift in Sources */,
 				7280CC422C286C94001E83DD /* TwofyApp.swift in Sources */,
