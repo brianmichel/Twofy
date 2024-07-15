@@ -575,6 +575,10 @@ video {
   display: grid;
 }
 
+.contents {
+  display: contents;
+}
+
 .h-11 {
   height: 2.75rem;
 }
@@ -807,4 +811,3 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-

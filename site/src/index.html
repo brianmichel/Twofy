@@ -22,6 +22,7 @@
         >
         <section class="text-violet-700">
           <a href="#why" class="underline">Why?</a>
+          <a href="#how-it-works" class="underline">How It Works</a>
           <a href="#features" class="underline">Features</a>
           <a href="#source" class="underline">Source</a>
         </section>
@@ -35,7 +36,7 @@
           <span class="font-mono bg-violet-200 p-1">2FA</span>
           helper application.
         </h1>
-        <p class="text-gray-700 mb-4">
+        <p class="mb-4">
           Getting two factor codes from your Messages app into your browser is
           pain and there is no API to allow browser developers to easily get
           these codes. Twofy is an open sourced, sandboxed application that
@@ -45,7 +46,7 @@
 
       <section id="why">
         <h2 class="text-3xl py-3">Why?</h2>
-        <p class="text-gray-700 mb-4">
+        <p class="mb-4">
           This idea isn't new, but it a continuation of the same ideas that have
           been used in Alfred, Raycast, and countless other helper applications
           in the open source world. I wanted something that would work in all of
@@ -54,7 +55,7 @@
           codes were being securely handled.
         </p>
 
-        <p class="text-gray-700 mb-4">
+        <p class="mb-4">
           It's important to me that something that can read your text messages
           is open source which allows anyone to inspect the code running on
           their machine and make an informed decision about that piece of
@@ -62,14 +63,32 @@
         </p>
       </section>
 
+      <section id="how-it-works">
+        <h2 class="text-3xl py-3">How It Works</h2>
+        <p class="mb-4">
+          When Twofy prompts you for the Messages directory this grants the
+          application access to read the database where all of the messages you
+          receive live on disk. The application can then set up a polling
+          listener on that database to find codes that match a particular regex.
+        </p>
+
+        <p class="mb-4">
+          If the query finds anything it dispatches an encrypted distributed
+          notification that can only be decrypted by the helper application that
+          the browser extension communicates with. Once that browser support
+          application receives that notification, it decrypts it and sends it
+          into the service worker within the browser extension process.
+        </p>
+      </section>
+
       <section id="features">
         <h2 class="text-3xl py-3">Features</h2>
-        <p class="text-gray-700 mb-4">
+        <p class="mb-4">
           Twofy is simple, but feature rich to help make your workflows a bit
           more straightforward when needing just-in-time access to your two
           factor authentication codes that have been sent via text message.
         </p>
-        <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 font-mono">
           <li
             class="p-3 bg-violet-100 border-violet-200 border-2 shadow-[5px_5px] shadow-violet-800"
           >
@@ -117,8 +136,9 @@
             <span class="font-bold">Open Source</span>
             <div class="text-xs mt-2">
               <span
-                >Twofy's processes use encrypted messages to securely pass codes
-                between processes.</span
+                >The main application, helper application, extensions, and even
+                this site are all open source on GitHub to allow anyone to
+                inspect their contents.</span
               >
             </div>
           </li>
@@ -127,7 +147,7 @@
 
       <section id="source">
         <h2 class="text-3xl py-3">Source</h2>
-        <p class="text-gray-700 mb-4">
+        <p class="mb-4">
           You can find releases and source code publicly available on GitHub.
         </p>
         <a
@@ -143,7 +163,11 @@
       <nav class="flex gap-3 font-mono text-s justify-center">
         <a href="/privacy.html" class="underline">Privacy Policy</a>
         <a href="/tos.html" class="underline">Terms of Service</a>
-        <a href="https://twitter.com/brianmichel" class="hover:underline hover:text-blue-400">@brianmichel</a>
+        <a
+          href="https://twitter.com/brianmichel"
+          class="hover:underline hover:text-blue-400"
+          >@brianmichel</a
+        >
       </nav>
     </footer>
   </body>
