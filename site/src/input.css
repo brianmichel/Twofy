@@ -2,6 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.two-factor-code:hover {
-  content: "•••";
-}
