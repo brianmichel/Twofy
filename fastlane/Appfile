@@ -1,0 +1,3 @@
+app_identifier("me.foureyes.Twofy") # The bundle identifier of your app
+apple_id("brian.michel@gmail.com") # Your Apple email address
+itc_team_id("YN24FFRTC8") # Developer Portal Team ID
