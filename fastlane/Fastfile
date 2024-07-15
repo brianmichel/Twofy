@@ -40,19 +40,24 @@ lane :mac_release do |options|
   )
 
   if !dry_run
-    # git_commit(path: ['*'], message: "Creating release for version #{MAC_VERSION_NUMBER}, BUILD: #{BUILD_NUMBER}")
+    release_description = <<-eos
+    A new version of Twofy has been published...
+    * Twofy Version: #{get_version_number(target: "Twofy")}
+    * Twofy Build: #{BUILD_NUMBER}
+    eos
+    git_commit(path: ['*'], message: "Creating release for version #{MAC_VERSION_NUMBER}, BUILD: #{BUILD_NUMBER}")
 
-    # add_git_tag
-    # push_to_git_remote
+    add_git_tag
+    push_to_git_remote
 
-    # set_github_release(
-    #   repository_name: 'brianmichel/twofy',
-    #   api_token: ENV['GITHUB_TOKEN'],
-    #   description: release_description,
-    #   name: "#{BUILD_NUMBER}",
-    #   tag_name: "builds/mac/#{BUILD_NUMBER}",
-    #   upload_assets: [dmg_path]
-    # )
+    set_github_release(
+      repository_name: 'brianmichel/twofy',
+      api_token: ENV['GITHUB_TOKEN'],
+      description: release_description,
+      name: "#{BUILD_NUMBER}",
+      tag_name: "builds/mac/#{BUILD_NUMBER}",
+      upload_assets: [dmg_path]
+    )
   end
 end
 
