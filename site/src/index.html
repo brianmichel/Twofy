@@ -36,12 +36,19 @@
           <span class="font-mono bg-violet-200 p-1">2FA</span>
           helper application.
         </h1>
-        <p class="mb-4">
-          Getting two factor codes from your Messages app into your browser is
-          pain and there is no API to allow browser developers to easily get
-          these codes. Twofy is an open sourced, sandboxed application that
-          helps automate this process without any hassle.
-        </p>
+        <div>
+          <p class="mb-4">
+            Getting two factor codes from your Messages app into your browser is
+            pain and there is no API to allow browser developers to easily get
+            these codes. Twofy is an open sourced, sandboxed application that
+            helps automate this process without any hassle.
+          </p>
+          <ul class="grid gap-3 grid-cols-1 sm:grid-cols-3 w-full ">
+            <li><button class="shadow-inner shadow-green-50 w-full border-green-600 border-2 p-2 bg-gradient-to-b from-green-200 to-green-300 hover:bg-gradient-to-t font-mono text-sm">Download Application</button></li>
+            <li><button class="shadow-inner shadow-green-50 w-full border-green-600 border-2 p-2 bg-gradient-to-b from-green-200 to-green-300 hover:bg-gradient-to-t font-mono text-sm">Download Extension</button></li>
+            <li><button class="shadow-inner shadow-slate-50 w-full border-slate-600 border-2 p-2 bg-gradient-to-b from-slate-200 to-slate-300 hover:bg-gradient-to-t font-mono text-sm">Download Source</button></li>
+          </ul>
+        </div>
       </section>
 
       <section id="why">
@@ -153,7 +160,7 @@
         <a
           href="https://github.com/brianmichel/twofy"
           target="_blank"
-          class="bg-violet-200 p-2 border-violet-600 border-2 hover:bg-violet-100"
+          class="shadow-inner shadow-slate-50 w-full border-slate-600 border-2 p-2 bg-gradient-to-b from-slate-200 to-slate-300 hover:bg-gradient-to-t font-mono text-sm"
         >
           View source code on GitHub →
         </a>
