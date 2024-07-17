@@ -98,8 +98,12 @@ struct BrowsersView: View {
 
                             }
                             Spacer()
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                                Text("Details")
+                            Button(action: {
+                                Task {
+                                    try! await settings.installManifest(for: source)
+                                }
+                            }, label: {
+                                Text("Install")
                             })
                         }
                     }
@@ -118,9 +122,31 @@ struct BrowsersView: View {
     }
 }
 
+struct AdvancedView: View {
+    @Dependency(\.settings) var settings
+
+    var body: some View {
+        Form {
+            Section("Options") {
+                List {
+                    HStack {
+                        Text("Reset Onboarding")
+                        Spacer()
+                        Button {
+                            settings.needsOnboarding = true
+                        } label: {
+                            Text("Reset")
+                        }
+                    }
+                }
+            }
+        }.formStyle(.grouped)
+    }
+}
+
 public struct SettingsView: View {
     private enum Tabs: Hashable {
-        case general, browsers
+        case general, browsers, advanced
     }
 
     public init() {}
@@ -137,6 +163,10 @@ public struct SettingsView: View {
                     Label("Browsers", systemImage: "macwindow")
                 }
                 .tag(Tabs.browsers)
+            AdvancedView()
+                .tabItem {
+                    Label("Advanced", systemImage: "gearshape.2.fill")
+                }
         }
         .frame(width: 375)
     }
@@ -152,4 +182,8 @@ public struct SettingsView: View {
 
 #Preview("General") {
     GeneralView()
+}
+
+#Preview("Advanced") {
+    AdvancedView()
 }

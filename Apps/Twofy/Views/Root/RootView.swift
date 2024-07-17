@@ -60,6 +60,9 @@ struct RootView: View {
 
             }
         }
+        .sheet(isPresented: appModel.settings.$needsOnboarding, content: {
+            OnboardingView(onboarding: appModel.onboarding)
+        })
     }
 }
 

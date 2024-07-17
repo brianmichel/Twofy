@@ -6,8 +6,6 @@ public enum NativeMessageSource: String, Sendable, CaseIterable {
     case brave
     case chrome
     case edge
-    case opera
-    case operaGX
 }
 
 extension NativeMessageSource {
@@ -33,19 +31,22 @@ extension NativeMessageSource {
                 .appending(path: "NativeMessagingHosts", directoryHint: .isDirectory)
         case .brave:
             return basePath
-                .appending(path: "Google", directoryHint: .isDirectory)
-                .appending(path: "Chrome", directoryHint: .isDirectory)
+                .appending(path: "BraveSoftware", directoryHint: .isDirectory)
+                .appending(path: "Brave-Browser", directoryHint: .isDirectory)
                 .appending(path: "NativeMessagingHosts", directoryHint: .isDirectory)
-        case .opera:
-            return basePath
-                .appending(path: "Google", directoryHint: .isDirectory)
-                .appending(path: "Chrome", directoryHint: .isDirectory)
-                .appending(path: "NativeMessagingHosts", directoryHint: .isDirectory)
-        case .operaGX:
-            return basePath
-                .appending(path: "Google", directoryHint: .isDirectory)
-                .appending(path: "Chrome", directoryHint: .isDirectory)
-                .appending(path: "NativeMessagingHosts", directoryHint: .isDirectory)
+        }
+    }
+
+    public func manifest(with executablePath: String) -> Manifest {
+        switch self {
+        case .arc:
+            return .twofyChromiumBrowserSupport(with: executablePath)
+        case .brave:
+            return .twofyChromiumBrowserSupport(with: executablePath)
+        case .chrome:
+            return .twofyChromiumBrowserSupport(with: executablePath)
+        case .edge:
+            return .twofyChromiumBrowserSupport(with: executablePath)
         }
     }
 
@@ -59,10 +60,6 @@ extension NativeMessageSource {
             return "Chrome"
         case .brave:
             return "Brave"
-        case .opera:
-            return "Opera"
-        case .operaGX:
-            return "OperaGX"
         }
     }
 }

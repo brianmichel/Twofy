@@ -12,7 +12,6 @@
 		7280CC462C286C95001E83DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7280CC452C286C95001E83DD /* Assets.xcassets */; };
 		7280CC492C286C95001E83DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7280CC482C286C95001E83DD /* Preview Assets.xcassets */; };
 		7280CC552C2872A5001E83DD /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7280CC542C2872A5001E83DD /* AppModel.swift */; };
-		728BD2D22C3A195400AC7BBD /* Features in Resources */ = {isa = PBXBuildFile; fileRef = 728BD2D02C3A195400AC7BBD /* Features */; };
 		728BD2D42C3A196E00AC7BBD /* ManifestInstallerService in Frameworks */ = {isa = PBXBuildFile; productRef = 728BD2D32C3A196E00AC7BBD /* ManifestInstallerService */; };
 		728BD2D72C3A197600AC7BBD /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 728BD2D62C3A197600AC7BBD /* AppFeature */; };
 		728BD2DB2C3A1C4600AC7BBD /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728BD2DA2C3A1C4600AC7BBD /* InstructionsView.swift */; };
@@ -30,6 +29,9 @@
 		72CF54892C3F7AC60071DA59 /* DistributedNotificationIPC in Frameworks */ = {isa = PBXBuildFile; productRef = 72CF54882C3F7AC60071DA59 /* DistributedNotificationIPC */; };
 		72CF548D2C4209DF0071DA59 /* CodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF548C2C4209DF0071DA59 /* CodesViewModel.swift */; };
 		72CF548F2C420A2C0071DA59 /* CodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF548E2C420A2C0071DA59 /* CodesView.swift */; };
+		72CF54972C4600280071DA59 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF54962C4600280071DA59 /* OnboardingView.swift */; };
+		72CF54992C46061A0071DA59 /* ProgressDots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF54982C46061A0071DA59 /* ProgressDots.swift */; };
+		72CF549B2C4750E00071DA59 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CF549A2C4750E00071DA59 /* OnboardingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,9 @@
 		72CF547D2C3E15230071DA59 /* TwofyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwofyAppDelegate.swift; sourceTree = "<group>"; };
 		72CF548C2C4209DF0071DA59 /* CodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesViewModel.swift; sourceTree = "<group>"; };
 		72CF548E2C420A2C0071DA59 /* CodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesView.swift; sourceTree = "<group>"; };
+		72CF54962C4600280071DA59 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		72CF54982C46061A0071DA59 /* ProgressDots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDots.swift; sourceTree = "<group>"; };
+		72CF549A2C4750E00071DA59 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +269,7 @@
 		72CF548A2C4209C40071DA59 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				72CF54952C4600170071DA59 /* Onboarding */,
 				72CF548B2C4209D30071DA59 /* Codes */,
 				728BD2D82C3A1A7200AC7BBD /* Root */,
 			);
@@ -277,6 +283,16 @@
 				72CF548E2C420A2C0071DA59 /* CodesView.swift */,
 			);
 			path = Codes;
+			sourceTree = "<group>";
+		};
+		72CF54952C4600170071DA59 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				72CF54962C4600280071DA59 /* OnboardingView.swift */,
+				72CF54982C46061A0071DA59 /* ProgressDots.swift */,
+				72CF549A2C4750E00071DA59 /* OnboardingViewModel.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,7 +414,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				728BD2D22C3A195400AC7BBD /* Features in Resources */,
 				7280CC492C286C95001E83DD /* Preview Assets.xcassets in Resources */,
 				7280CC462C286C95001E83DD /* Assets.xcassets in Resources */,
 			);
@@ -432,8 +447,11 @@
 				7280CC552C2872A5001E83DD /* AppModel.swift in Sources */,
 				72CF547E2C3E15230071DA59 /* TwofyAppDelegate.swift in Sources */,
 				7280CC422C286C94001E83DD /* TwofyApp.swift in Sources */,
+				72CF549B2C4750E00071DA59 /* OnboardingViewModel.swift in Sources */,
+				72CF54972C4600280071DA59 /* OnboardingView.swift in Sources */,
 				72CF548D2C4209DF0071DA59 /* CodesViewModel.swift in Sources */,
 				72CF548F2C420A2C0071DA59 /* CodesView.swift in Sources */,
+				72CF54992C46061A0071DA59 /* ProgressDots.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

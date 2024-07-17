@@ -9,6 +9,27 @@ lane :print_version_number do
   print_build_information
 end
 
+lane :update_version_file do
+  print_build_information
+
+  file = <<-EOF
+/// WARNING: Do not manually edit this file, it is automatically generated.
+/// Please look at the Fastfile to update this file if needed.
+import Foundation
+/// Version information for the Marconio applicatioin
+public struct TwofyVersionInformation {
+/// The version number of the macOS application
+public static let macVersionNumber: String = "#{MAC_VERSION_NUMBER}"
+/// The build number that would be set, a concatenation of the date and time.
+public static let buildNumber: String = "#{BUILD_NUMBER}"
+/// The git revision that is being built.
+public static let gitRevision: String = "#{GIT_REVISION}"
+}
+  EOF
+  FileUtils.mkdir_p("../Frameworks/Features/Sources/Utilities")
+  File.open("../Frameworks/Features/Sources/Utilities/TwofyVersionInformation.swift", "w+") { |f| f.write(file)}
+end
+
 lane :mac_release do |options|
   dry_run = options[:dry_run]
   if dry_run

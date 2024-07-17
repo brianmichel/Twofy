@@ -15,9 +15,10 @@ import SwiftUI
 let logger = Logger.for(category: "App")
 
 final class AppModel: ObservableObject {
-    @Dependency(\.settings) var settings
-
+    @Published private(set) var settings = SettingsModel()
     @Published private(set) var codesViewModel: CodesViewModel?
+    @Published private(set) var onboarding = OnboardingViewModel()
+    
 
     @Published var databaseFolder: URL? {
         didSet {
@@ -27,11 +28,6 @@ final class AppModel: ObservableObject {
     }
 
     @Published var error: (any Error)? = nil
-    
-    private let manifestInstaller = XPCService<ManifestInstallerServiceProtocol>(
-        connection: NSXPCConnection(serviceName: .manifestInstaller),
-        interface: NSXPCInterface(with: ManifestInstallerServiceProtocol.self)
-    )
 
     init(codesViewModel: CodesViewModel? = nil, databaseFolder: URL? = nil, error: (any Error)? = nil) {
         self.codesViewModel = codesViewModel
@@ -42,15 +38,6 @@ final class AppModel: ObservableObject {
     func setupListener(for path: URL) {
         do {
             codesViewModel = try CodesViewModel(databasePath: path)
-            manifestInstaller.setup { error in
-                logger.error("Error from manifest installer service \(error)")
-            }
-            manifestInstaller.service?.install(for: .describing(NativeMessageSource.arc), with: { error in
-                if let installerError = error as? ManifestInstallationError {
-                    logger.error("Manifest installation error \(installerError)")
-                }
-            })
-
             error = nil
         } catch let error {
             self.error = error
