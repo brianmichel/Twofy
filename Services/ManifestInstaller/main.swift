@@ -2,7 +2,18 @@ import Foundation
 import ManifestInstallerService
 
 class ServiceDelegate: NSObject, NSXPCListenerDelegate {
+    private enum Constants {
+        static let codeSigningRequirement: String = {
+            #if DEBUG
+            #"identifier "me.foureyes.Twofy""#
+            #else
+            #"identifier "me.foureyes.Twofy" and anchor apple generic"#
+            #endif
+        }()
+    }
+
     func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
+        newConnection.setCodeSigningRequirement(Constants.codeSigningRequirement)
         newConnection.exportedInterface = NSXPCInterface(with: ManifestInstallerServiceProtocol.self)
         newConnection.exportedObject = ManifestInstallerService()
         newConnection.resume()
@@ -14,10 +25,6 @@ class ServiceDelegate: NSObject, NSXPCListenerDelegate {
 let delegate = ServiceDelegate()
 
 let listener = NSXPCListener.service()
-#if !DEBUG
-// TODO: Figure out how to setup this requirement correctly
-listener.setConnectionCodeSigningRequirement(#"identifier "me.foureyes.Twofy" and anchor apple generic"#)
-#endif
 listener.delegate = delegate
 
 listener.resume()

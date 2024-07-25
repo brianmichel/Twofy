@@ -3,7 +3,7 @@
   "name": "Twofy",
   "version": "1.0",
   "description": "Communicates with the Twofy native desktop application.",
-  "permissions": ["nativeMessaging", "tabs"],
+  "permissions": ["nativeMessaging"],
   "background": {
     "service_worker": "background.js",
     "type": "module"
