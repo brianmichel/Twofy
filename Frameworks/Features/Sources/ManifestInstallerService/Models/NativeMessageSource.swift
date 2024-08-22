@@ -1,7 +1,7 @@
 import Foundation
 import Utilities
 
-public enum NativeMessageSource: String, Sendable, CaseIterable {
+public enum NativeMessageSource: String, Sendable, CaseIterable, Codable, Equatable {
     case arc
     case brave
     case chrome
@@ -37,6 +37,10 @@ extension NativeMessageSource {
         }
     }
 
+    public var manifestPath: URL {
+        return installationDirectory.appending(component: "me.foureyes.twofy.json", directoryHint: .notDirectory)
+    }
+
     public func manifest(with executablePath: String) -> Manifest {
         switch self {
         case .arc:
@@ -55,11 +59,24 @@ extension NativeMessageSource {
         case .arc:
             return "Arc"
         case .edge:
-            return "Edge"
+            return "Microsoft Edge"
         case .chrome:
-            return "Chrome"
+            return "Google Chrome"
         case .brave:
-            return "Brave"
+            return "Brave Browser"
+        }
+    }
+
+    public var bundleIdentifier: String {
+        switch self {
+        case .arc:
+            return "company.thebrowser.Browser"
+        case .edge:
+            return "com.microsoft.edgemac"
+        case .chrome:
+            return "com.google.Chrome"
+        case .brave:
+            return "com.brave.Browser"
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-  "originHash" : "735e09aaa1218a226ad4d6168040c87925cee500faaabfdbabce0c43ea9f32ac",
+  "originHash" : "df4b58a8b3769787d45ab38bd9eed51155bebfcac0c73f31dc2cc65983282442",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -71,6 +71,15 @@
       "state" : {
         "revision" : "4c6cc0a3b9e8f14b3ae2307c5ccae4de6167ac2c",
         "version" : "600.0.0-prerelease-2024-06-12"
+      }
+    },
+    {
+      "identity" : "swiftyxpc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CharlesJS/SwiftyXPC.git",
+      "state" : {
+        "revision" : "efcdd7b1ac42ddd14869ca8e6ca5fb50a2709d26",
+        "version" : "0.5.3"
       }
     },
     {

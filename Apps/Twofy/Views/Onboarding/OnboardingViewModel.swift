@@ -2,8 +2,7 @@ import AppFeature
 import Dependencies
 import ManifestInstallerService
 import SwiftUI
-import XPCSupport
-
+import SwiftyXPC
 
 final class OnboardingViewModel: ObservableObject {
     @Dependency(\.settings) var settings: SettingsModel
@@ -15,17 +14,17 @@ final class OnboardingViewModel: ObservableObject {
     }
     @Published var selectedBrowser: NativeMessageSource = .arc
 
-    private let manifestInstaller = XPCService<ManifestInstallerServiceProtocol>(
-        connection: NSXPCConnection(serviceName: .manifestInstaller),
-        interface: NSXPCInterface(with: ManifestInstallerServiceProtocol.self)
-    )
+    private let connection: XPCConnection
 
     init() {
-        needsOnboarding = settings.needsOnboarding
-
-        manifestInstaller.setup { error in
-            logger.error("Manifest installation error: \(error.localizedDescription)")
+        connection = try! XPCConnection(type: .remoteService(bundleID: .manifestInstaller))
+        connection.errorHandler = { _, error in
+            logger.error("Onbarding manifestInstaller received error: \(error)")
         }
+
+        connection.resume()
+
+        needsOnboarding = settings.needsOnboarding
     }
 
     func finishOnboarding(with browser: NativeMessageSource) async throws {
@@ -35,6 +34,9 @@ final class OnboardingViewModel: ObservableObject {
         }
 
         let browserSupport = Bundle.main.browserSupportApplicationURL
-        _ = try await manifestInstaller.service?.install(for: browser.rawValue, browserSupportPath: browserSupport)
+        try await connection.sendMessage(
+            name: ManifestInstallerService.Commands.installManifest,
+            request: ManifestInstallRequest(application: browser, browserSupportPath: browserSupport)
+        )
     }
 }

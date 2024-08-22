@@ -36,7 +36,8 @@ let package = Package(
         .package(url: "https://github.com/groue/GRDB.swift.git", from: "6.27.0"),
         .package(url: "https://github.com/jedisct1/swift-sodium.git", from: "0.9.1"),
         .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.2.2"),
-        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.0.0")
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.0.0"),
+        .package(url: "https://github.com/CharlesJS/SwiftyXPC", from: "0.5.3")
     ],
     targets: [
         .target(
@@ -71,6 +72,7 @@ let package = Package(
         .target(
             name: "ManifestInstallerService",
             dependencies: [
+                .product(name: "SwiftyXPC", package: "swiftyxpc"),
                 "Utilities",
                 "XPCSupport",
             ]

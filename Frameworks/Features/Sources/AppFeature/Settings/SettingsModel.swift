@@ -4,6 +4,7 @@ import ManifestInstallerService
 import SwiftUI
 import Utilities
 import XPCSupport
+import SwiftyXPC
 
 let logger = Logger.for(category: "AppFeature")
 
@@ -31,18 +32,28 @@ public final class SettingsModel: ObservableObject {
     @AppStorage(ID.lookbackWindow.rawValue) public var lookbackWindow: Double = 2
     @AppStorage(ID.needsOnboarding.rawValue) public var needsOnboarding: Bool = true
 
-    private let manifestInstaller = XPCService<ManifestInstallerServiceProtocol>(
-        connection: NSXPCConnection(serviceName: .manifestInstaller),
-        interface: NSXPCInterface(with: ManifestInstallerServiceProtocol.self)
-    )
+    @Published
+    public private(set) var availableSources = [NativeMessageSourceAvailability]()
+
+    private let connection: XPCConnection
 
     public init() {
-        manifestInstaller.setup { error in
+        connection = try! XPCConnection(type: .remoteService(bundleID: .manifestInstaller))
+        connection.errorHandler = { _, error in
             logger.error("Settings manifestInstaller received error: \(error)")
         }
+
+        connection.resume()
     }
 
     func installManifest(for browser: NativeMessageSource) async throws {
-        _ = try await manifestInstaller.service?.install(for: browser.rawValue, browserSupportPath: Bundle.main.browserSupportApplicationURL)
+        try await connection.sendMessage(
+            name: ManifestInstallerService.Commands.installManifest,
+            request: ManifestInstallRequest(application: browser, browserSupportPath: Bundle.main.browserSupportApplicationURL)
+        )
+    }
+
+    func fetchAvailableBrowsers() async throws -> [NativeMessageSourceAvailability] {
+        return try await connection.sendMessage(name: ManifestInstallerService.Commands.findNativeMessageSources)
     }
 }

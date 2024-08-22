@@ -75,11 +75,13 @@ struct GeneralView: View {
 struct BrowsersView: View {
     @Dependency(\.settings) var settings: SettingsModel
 
+    @State var browsers: [NativeMessageSourceAvailability] = []
+
     var body: some View {
         Form {
             Section {
                 List {
-                    ForEach(NativeMessageSource.allCases, id: \.self) { source in
+                    ForEach(browsers, id: \.source) { browser in
                         HStack {
                             Image(systemName: "app.dashed")
                                 .resizable()
@@ -87,10 +89,10 @@ struct BrowsersView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 30)
                             VStack(alignment: .leading) {
-                                Text(source.name)
+                                Text(browser.source.name)
                                     .font(.headline)
                                 Group {
-                                    if source == .arc {
+                                    if browser.defaultBrowser {
                                         Text("Default Browser")
                                             .font(.footnote)
                                     }
@@ -100,11 +102,17 @@ struct BrowsersView: View {
                             Spacer()
                             Button(action: {
                                 Task {
-                                    try! await settings.installManifest(for: source)
+                                    do {
+                                        try await settings.installManifest(for: browser.source)
+                                    } catch {
+                                        fatalError("Error installing manifest: \(error)")
+                                    }
                                 }
                             }, label: {
-                                Text("Install")
+                                Text(buttonText(for: browser))
                             })
+                            .disabled(browser.installationStatus == .notInstalled)
+                            .help(helpText(for: browser))
                         }
                     }
                 }
@@ -112,13 +120,50 @@ struct BrowsersView: View {
                 HStack {
                     Text("Available Browsers")
                     Spacer()
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                    Button(action: {
+                        updateBrowsers()
+                    }, label: {
                         Image(systemName: "arrow.clockwise")
                     })
                 }
             }
         }
         .formStyle(.grouped)
+        .onAppear(perform: {
+            updateBrowsers()
+        })
+    }
+
+    private func helpText(for item: NativeMessageSourceAvailability) -> String {
+        switch item.installationStatus {
+        case .installed:
+            return "Install Twofy manifest to enable communication with extension."
+        case .installedWithHostManifest:
+            return "Manifest has already been installed for this browser."
+        case .notInstalled:
+            return "This browser is not installed."
+        }
+    }
+
+    private func buttonText(for item: NativeMessageSourceAvailability) -> String {
+        switch item.installationStatus {
+        case .installed:
+            return "Install Manifest"
+        case .installedWithHostManifest:
+            return "Reinstall Manifest"
+        case .notInstalled:
+            return "Unavailable"
+        }
+    }
+
+    private func updateBrowsers() {
+        Task {
+            do {
+                browsers = try await settings.fetchAvailableBrowsers()
+            } catch {
+                logger.error("Unable to refresh browser list: \(error)")
+            }
+        }
     }
 }
 
